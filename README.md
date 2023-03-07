@@ -8,11 +8,10 @@ Also, replace NUM above with your team's number.
 
 Application name: MusicMatch
 
-
 Team Overview (name and github username):  
-Aayush Patel: aaypatel
-Arnav Kolli: arnav-kolli
-Rahul Vedula: rvedula02
+Aayush Patel: aaypatel  
+Arnav Kolli: arnav-kolli  
+Rahul Vedula: rvedula02  
 Anvesh Sunkara: Anvesh8712
 
 Innovative Idea:
@@ -32,7 +31,7 @@ At this point, this is what we can think of. However, we are sure that as we sta
 Functionality:
 As was mentioned in the data above, we intend to have a fully functioning web app that has different types of functionalities.
 1. Messaging Service: Users with similar music preferences are matched and can chat with each other.
-2. Music Analysis: Users can swipe through our selection of intial music or upload their own playlists for us to analyze their music tastes based on quantitative song features such as tempo/danceability/energy/genre, etc.
+2. Music Analysis: Users can swipe through our selection of initial music or upload their own playlists for us to analyze their music tastes based on quantitative song features such as tempo/danceability/energy/genre, etc.
 3. Music Discovery: Users can discover new music through our recommendation algorithm.
 4. Playlists: Users can add new songs that they like to their own playlists. 
 5. Music app exports: We hope to add functionality that allows users to export their created playlists from MusicMatch to their libraries in Spotify or Apple Music.
