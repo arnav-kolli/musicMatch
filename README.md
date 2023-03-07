@@ -8,7 +8,6 @@ Also, replace NUM above with your team's number.
 
 Application name: MusicMatch
 
-
 Team Overview (name and github username):  
 Aayush Patel: aaypatel  
 Arnav Kolli: arnav-kolli  
