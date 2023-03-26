@@ -16,19 +16,43 @@ Esse est et ut rem et praesentium quibusdam eaque. Aut consectetur illum placeat
 
 Qui commodi beatae. Quaerat saepe tempora nisi labore ducimus corporis adipisci repellat nihil. Dolores est sed ratione consequatur est magnam cupiditate. Repellendus molestias qui doloribus. Deserunt quidem temporibus. Sunt hic laudantium vitae natus est.
 
+
 ## Stories
+
+## MusicMatch Services:
+
+    1. MusicMatch Connect: One of our core services offered, MusicMatch Connect is aimed at anyone looking to meet someone new to spice up their romantic life or just connect with someone interested in similar music! Our propriety algorithm makes sure to match you with someone who not just one's physical preferences but also music preferences! Connect with each other using our chat functionality.
+    2. MusicMatch Discovery: Our other core offering, MusicMatch Discovery aims at allowing users to discover music tailored to their own preferences. Our algorithms allow us to analyze users' existing music tastes and suggest similar music. We also give users the opportunity to make playlists of music they like!
 
 ### Story 1
 
-Omnis sed consequatur beatae laudantium voluptatem tenetur. Exercitationem omnis quisquam omnis. Tenetur vitae excepturi rerum quia corporis soluta qui iste necessitatibus. Aut quam autem cum et. Harum consequatur perspiciatis eum et temporibus nisi qui pariatur.
+Story Protagonist: Bob, 21 years old. A college student who goes to school at a college town a few hours from the nearest city.
+
+MusicMatch and Bob: As someone who lives in a college town relatively far from the nearest city, Bob has trouble meeting people who are into the same things he's into (basically, cool!). He sees an ad for MusicMatch while scrolling through instagram and decides to check it out. Upon opening the site, he is met with a homepage that looks like this:
+
+*INSERT HOME PAGE SCREENSHOT*
+
+Since Bob is more interested in the "meeting people" part of MusicMatch, he clicks on MusicMatch Connect which then prompts him to add 10 - 15 of his favorite songs. Once he's done that, Bob waits while a loading screen pops up loading a list of people and their favorite songs! Bob then sends five chat requests, the most he can send per day on the free version, to five different individuals whose favorite songs he recognized. 
+
+*INSERT POTENTIAL MATCHES UI*
+
+About 30 minutes later, Bob hears a ping signifying someone has accepted his chat request, prompting him to open up a chat window and start talking to his lucky match!
+
+![MusicMatch Create Account & Login page](login.png)
+
+Upon logging in
 
 ### Story 2
 
-Blanditiis et esse ipsa soluta. Temporibus sunt possimus ut veritatis sint ut in quia eum. Omnis ea vel quae eligendi. Illo optio est doloremque autem. Sit ea dolorum architecto.
- 
-Fuga ea culpa eaque molestiae illo quod odio culpa. Et aut repellendus aut temporibus quae quia et. Quia consectetur quod est. Repellat animi amet quia velit.
- 
-Voluptatum accusantium dolores cumque sit accusamus. Eaque quia qui commodi rerum eos doloribus. Sint aliquam quae ut ut tempora pariatur qui.
+Story Protagonist: Shreya, 15 years old. A bored highschool kid looking to find songs similar to her favorite song: "Fireflies by Owl City". 
+
+MusicMatch and Shreya: Having spent the last two hours looking through Youtube's suggested songs similar to Fireflies and finding nothing, Shreya has given up hope of finding similar music. She texts her friend her frustrations only to be told "OMG YOU GOTTA CHECK MUSICMATCH OUT !!!!!"
+
+Having logged onto her laptop, Shreya heads over to MusicMatch's website to check it out. Upon seeing two options for "MusicMatch Connect" and "MusicMatch Discover" on the home page, she clicks on MusicMatch Discover. After being prompted to enter in one song's name, she waits for the loading screen to finish...loading. 
+
+A couple seconds later, a list of ten songs show up on her screen with an analytical breakdown of each song provided under it (showing how they were similar to her chosen song). She clicks on the first song and is redirected to the youtube link for the song where thirty seconds in, she promptly declares it her new favorite song. 
+
+*POTENTIALLY PROVIDE RESULTS PAGE* 
 
 ### Story 3
 
