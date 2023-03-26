@@ -25,6 +25,7 @@ Excluding user data, our application will probably deal with the following data 
 3. Album Covers: Images --> Displaying album/song covers for each song
 4. Messaging service: Text --> Create messaging platform between matches users
 5. Playlists: Arrays --> Create "playlists" (arrays) of songs that a user likes from suggested music
+6. Artist info: Dictionaries --> We intend to have artist details, so it allows people to discover more music  
 
 At this point, this is what we can think of. However, we are sure that as we start work on this idea there will be more data concepts that arise. 
 
