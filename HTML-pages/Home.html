@@ -14,6 +14,7 @@
         padding: 10px; 
         text-align: center; 
         letter-spacing: 3px;
+        border-radius: 10px 10px 0 0;
       }
 
       .nav-tabs > li.active > a {
@@ -28,6 +29,23 @@
       .nav-tabs {
         border: none;
       }
+
+      .strip2 {
+        background-color: #256dd8;
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .btn-orange {
+        background-color: orange;
+        color: white;
+        height: 200px;
+        white-space: normal; 
+      }
     </style>
   </head>
   <body>
@@ -39,5 +57,38 @@
         <li><a href="#">Discover</a></li>
       </ul>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="container-fluid" style="padding-left:0px; padding-right:0px;">
+          <div class="row">
+            <div class="col-sm-6 strip2">
+              <h2>Strip 1</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis euismod turpis, vitae convallis nisi. Phasellus auctor neque vel lectus dapibus convallis. Nam pellentesque justo dolor, ac dignissim eros feugiat a. Proin non sapien non magna accumsan varius. Praesent sit amet est sed nulla facilisis hendrerit a eget sapien.</p>
+            </div>
+            <div></div>
+            <div class="col-sm-6 strip2">
+              <h2>Strip 2</h2>
+              <p>Nullam quis orci lobortis, vehicula lorem eget, blandit dolor. Donec eleifend aliquam lacus, in lobortis magna mollis vel. Donec gravida faucibus lectus eu convallis. Morbi pretium, massa ut laoreet mattis, risus turpis eleifend est, ut blandit leo urna eget ipsum. Praesent ut metus at risus eleifend fermentum nec ut ante.</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 30px;">
+      <div class="row">
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-orange btn-block rounded-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis euismod turpis, vitae convallis nisi. Phasellus auctor neque vel lectus dapibus convallis. Nam pellentesque justo dolor, ac dignissim eros feugiat a. Proin non sapien non magna accumsan varius. Praesent sit amet est sed nulla facilisis hendrerit a eget sapien.</button>
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-orange btn-block rounded-0">Donec eleifend aliquam lacus, in lobortis magna mollis vel. Donec gravida faucibus lectus eu convallis. Morbi pretium, massa ut laoreet mattis, risus turpis eleifend est, ut blandit leo urna eget ipsum. Praesent ut metus at risus eleifend fermentum nec ut ante.</button>
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-orange btn-block rounded-0">Fusce non erat in enim congue dictum. Duis vel malesuada lacus. Sed id mauris felis. Duis varius augue lectus, in bibendum velit interdum eget. Phasellus at sapien et est tincidunt posuere.</button>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
   </body>
 </html>
