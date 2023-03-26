@@ -4,13 +4,9 @@
 
 Facilis quas ut iste nam et. Doloribus ut nostrum nobis ut ut eos quia vel soluta. Minus dolorem error neque voluptas ex.
 
-![Wireframe 1](wireframe-1.png)
+![Login Page](326login.png)
 
-Consequuntur reiciendis illo non suscipit necessitatibus dolores doloribus sed atque. Quos rem excepturi ut eum et eaque facere et. Illo quos voluptatem ratione sint numquam dolor assumenda. Ea et et sapiente distinctio et aut aspernatur necessitatibus est.
- 
-Est velit debitis enim. Esse et et quos animi animi. Quibusdam et porro et praesentium maiores dolores facilis. Voluptas molestias sapiente aperiam culpa. Et doloribus maiores omnis quisquam dolores.
- 
-Esse est et ut rem et praesentium quibusdam eaque. Aut consectetur illum placeat repellendus nam. Exercitationem dolorem tempora.
+The first wireframe design created was represents the login page for a user. Upon accessing our web app, they see a logo of our product and  are given the instruction to login using their associated email address and password. Users are also given the option to have the web app  remember their login details so that they do not need to enter them again in the future. Once they fill out the inforamtion, they can click the "sign in" button to lead them to the next part of the application. 
 
 ![Wireframe 2](wireframe-2.png)
 
