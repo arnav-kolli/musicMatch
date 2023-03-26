@@ -64,7 +64,6 @@
     </style>
         <script>
             $(function() {
-              // make song element draggable
               $(".song").draggable({
                 containment: "window",
                 stop: function() {
@@ -72,8 +71,7 @@
                   var songWidth = song.outerWidth();
                   var containerWidth = song.parent().outerWidth();
                   var songPosition = song.position().left;
-      
-                  // if song is dragged to the right end, discard it and add new song
+
                   if (songPosition + songWidth >= containerWidth) {
                     song.addClass("discard");
                     setTimeout(function() {
@@ -86,7 +84,6 @@
                       newSong.appendTo(".song-container");
                     }, 500);
                   }
-                  // if song is dragged to the left end, discard it
                   else if (songPosition <= 0 - songWidth) {
                     song.addClass("discard");
                     setTimeout(function() {
@@ -96,7 +93,6 @@
                 }
               });
       
-              // make song container droppable to remove discarded songs
               $(".song-container").droppable({
                 accept: ".song.discard",
                 drop: function(event, ui) {
