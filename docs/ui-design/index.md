@@ -2,11 +2,12 @@
 
 ## Wireframe
 
-Facilis quas ut iste nam et. Doloribus ut nostrum nobis ut ut eos quia vel soluta. Minus dolorem error neque voluptas ex.
+For our web application, we have 5 total wireframe designs in mind to create: The login page, home page, playlist page, swiping page, and texting page. 
 
+Login Page: 
 ![Login Page](326login.png)
 
-The first wireframe design created represents the login page for a user. Upon accessing our web app, they see a logo of our product and  are given the instruction to login using their associated email address and password. Users are also given the option to have the web app  remember their login details so that they do not need to enter them again in the future. Once they fill out the inforamtion, they can click the "sign in" button to lead them to the next part of the application. 
+The first wireframe design created represents the login page for a user. Upon accessing our web app, they see a logo of our product and  are given the instruction to login using their associated email address and password. Users are also given the option to have the web app  remember their login details so that they do not need to enter them again in the future. Once they fill out the information, they can click the "sign in" button to lead them to the next part of the application. 
 
 ![Wireframe 2](wireframe-2.png)
 
