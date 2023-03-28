@@ -2,7 +2,7 @@
 
 ## Wireframe
 
-For our web application, we have 5 total wireframe designs in mind to create: The login page, home page, playlist page, swiping page, and texting page. 
+For our web application, we have 5 total wireframe designs in mind to create: The login page, home page, playlist page, analysis page, and texting page. 
 
 Login Page: 
 ![Login Page](326login.png)
@@ -13,11 +13,13 @@ The first wireframe design created represents the login page for a user. Upon ac
 
 Qui commodi beatae. Quaerat saepe tempora nisi labore ducimus corporis adipisci repellat nihil. Dolores est sed ratione consequatur est magnam cupiditate. Repellendus molestias qui doloribus. Deserunt quidem temporibus. Sunt hic laudantium vitae natus est.
 
+Analysis Page:
 ![Analysis page](Analysis.png)
-This design depicts what the analysis page looks like for a user. They are able to choose whether they like a song or not and thus can help us analyze their taste in music and help suggest similar songs
+This design depicts what the analysis page looks like from a user perspective. They are able to choose whether they like a song or not and thus can help us analyze their taste in music and help suggest similar songs. This page consists of two buttons the user can interact with: the dislike and like button. This interface makes it simple for a user to understand what to do, and also includes instructions on the side in case there is any confusion. Clicking "like" will add the song to a specific list with all the songs the user has "liked" in the past. Clicking "dislike" will remove the song from the screen and present a new song for the user to decide on.
 
+Playlist Page:
 ![playlist page](playlist.png)
-This page just allows users to add songs to a playlist and finally export that playlist to spotify
+The playlist page allows users to add songs to a playlist and export that playlist to their associated Spotify account. The list of songs are curated based on which songs the user liked in the analysis page. There is one button here that the user can interact with, which is the "export to spotify" button. This button automatically takes the list of songs and creates a playlist including them for the user. 
 
 ## Stories
 
