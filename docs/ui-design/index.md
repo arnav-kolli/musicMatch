@@ -13,6 +13,11 @@ The first wireframe design created represents the login page for a user. Upon ac
 
 Qui commodi beatae. Quaerat saepe tempora nisi labore ducimus corporis adipisci repellat nihil. Dolores est sed ratione consequatur est magnam cupiditate. Repellendus molestias qui doloribus. Deserunt quidem temporibus. Sunt hic laudantium vitae natus est.
 
+![Analysis page](Analysis.png)
+This design depicts what the analysis page looks like for a user. They are able to choose whether they like a song or not and thus can help us analyze their taste in music and help suggest similar songs
+
+![playlist page](playlist.png)
+This page just allows users to add songs to a playlist and finally export that playlist to spotify
 
 ## Stories
 
