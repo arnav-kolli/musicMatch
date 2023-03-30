@@ -9,9 +9,9 @@ Login Page:
 
 The first wireframe design created represents the login page for a user. Upon accessing our web app, they see a logo of our product and  are given the instruction to login using their associated email address and password. Users are also given the option to have the web app  remember their login details so that they do not need to enter them again in the future. Once they fill out the information, they can click the "sign in" button to lead them to the next part of the application. 
 
-![Wireframe 2](wireframe-2.png)
+![Home Page](homepage.png)
 
-Qui commodi beatae. Quaerat saepe tempora nisi labore ducimus corporis adipisci repellat nihil. Dolores est sed ratione consequatur est magnam cupiditate. Repellendus molestias qui doloribus. Deserunt quidem temporibus. Sunt hic laudantium vitae natus est.
+The home page wireframe is what the user sees upon signing in on the login page. Aside from the navigation bar, the page does not have any forms of interaction for the user. Instead, this page serves as an informational piece to tell the user what the application is and what features are included. There are two pieces of text that represent what our product is and what the overall goal is. At the bottom, there are 3 pieces of text that explain each feature of the application is meant to do. Overall, this page will help our users interact with our application better and make it easier to navigate as a whole.  
 
 Analysis Page:
 ![Analysis page](Analysis.png)
