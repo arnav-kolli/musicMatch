@@ -9,6 +9,7 @@ Login Page:
 
 The first wireframe design created represents the login page for a user. Upon accessing our web app, they see a logo of our product and  are given the instruction to login using their associated email address and password. Users are also given the option to have the web app  remember their login details so that they do not need to enter them again in the future. Once they fill out the information, they can click the "sign in" button to lead them to the next part of the application. 
 
+Home Page: 
 ![Home Page](homepage.png)
 
 The home page wireframe is what the user sees upon signing in on the login page. Aside from the navigation bar, the page does not have any forms of interaction for the user. Instead, this page serves as an informational piece to tell the user what the application is and what features are included. There are two pieces of text that represent what our product is and what the overall goal is. At the bottom, there are 3 pieces of text that explain each feature of the application is meant to do. Overall, this page will help our users interact with our application better and make it easier to navigate as a whole.  
@@ -70,9 +71,10 @@ Optio ea sit minima cum consequatur at ut incidunt. Ea voluptatem iure modi offi
 
 Reiciendis velit dolorum voluptas earum. Rerum nobis accusantium laudantium minima incidunt. Magnam aut minus minus. Cumque unde voluptatibus soluta molestias perspiciatis aperiam accusantium laborum quo.
 
-![HTML & CSS Mockup 1](mockup-1.png)
+Login Page Mockup:
+![Login Page Mockup](loginmockup.png)
 
-Natus est molestias est et autem non in. Laudantium consequatur facilis perferendis. Saepe similique sapiente rem ut. Laudantium natus voluptas delectus molestiae ab omnis quidem. Maxime cumque porro ea deleniti incidunt nihil cupiditate sunt. Nihil eaque porro nemo veritatis.
+Here is the mockup for the login page of our application. We followed the format we came up with in the wireframe because it allowed for simplicity from a user perspective. We kept the same features such as the logo and "remember me" checkbox. The sizing of all the elements were all consistent too in order to make the page visually appealing.
 
 ![HTML & CSS Mockup 2](mockup-2.png)
 
