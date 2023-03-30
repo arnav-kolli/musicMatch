@@ -25,26 +25,20 @@ The playlist page allows users to add songs to a playlist and export that playli
 
 ## MusicMatch Services:
 
-    1. MusicMatch Connect: One of our core services offered, MusicMatch Connect is aimed at anyone looking to meet someone new to spice up their romantic life or just connect with someone interested in similar music! Our propriety algorithm makes sure to match you with someone who not just one's physical preferences but also music preferences! Connect with each other using our chat functionality.
+    1. MusicMatch Connect: One of our core services offered, MusicMatch Connect is aimed at people looking to match with and meet people interested in the same music as themselves. Connect also has a group functionality that allows people to find groups to attend concerts or other music festivals with.
     2. MusicMatch Discovery: Our other core offering, MusicMatch Discovery aims at allowing users to discover music tailored to their own preferences. Our algorithms allow us to analyze users' existing music tastes and suggest similar music. We also give users the opportunity to make playlists of music they like!
 
 ### Story 1
 
 Story Protagonist: Bob, 21 years old. A college student who goes to school at a college town a few hours from the nearest city.
 
-MusicMatch and Bob: As someone who lives in a college town relatively far from the nearest city, Bob has trouble meeting people who are into the same things he's into (basically, cool!). He sees an ad for MusicMatch while scrolling through instagram and decides to check it out. Upon opening the site, he is met with a homepage that looks like this:
+MusicMatch and Bob: As someone who lives in a college town relatively far from the nearest city, Bob has trouble meeting people who are into the same things he's into (basically, cool!). He sees an ad for MusicMatch while scrolling through instagram and decides to check it out. Upon opening the site, he is met with the homepage. 
 
-*INSERT HOME PAGE SCREENSHOT*
+![Home Page](homepage.png)
 
 Since Bob is more interested in the "meeting people" part of MusicMatch, he clicks on MusicMatch Connect which then prompts him to add 10 - 15 of his favorite songs. Once he's done that, Bob waits while a loading screen pops up loading a list of people and their favorite songs! Bob then sends five chat requests, the most he can send per day on the free version, to five different individuals whose favorite songs he recognized. 
 
-*INSERT POTENTIAL MATCHES UI*
-
-About 30 minutes later, Bob hears a ping signifying someone has accepted his chat request, prompting him to open up a chat window and start talking to his lucky match!
-
-![MusicMatch Create Account & Login page](login.png)
-
-Upon logging in
+About 30 minutes later, Bob hears a ping signifying someone has accepted his chat request, prompting him to open up a chat window and start texting. 
 
 ### Story 2
 
@@ -56,30 +50,23 @@ Having logged onto her laptop, Shreya heads over to MusicMatch's website to chec
 
 A couple seconds later, a list of ten songs show up on her screen with an analytical breakdown of each song provided under it (showing how they were similar to her chosen song). She clicks on the first song and is redirected to the youtube link for the song where thirty seconds in, she promptly declares it her new favorite song. 
 
-*POTENTIALLY PROVIDE RESULTS PAGE* 
-
 ### Story 3
 
-Esse itaque quia est nam. Ut voluptate voluptatem tempora officia. Minus et repellendus ut aut. Aut sint sint distinctio perferendis voluptas. Aut libero qui reprehenderit. Quia dolor ratione dolore porro.
- 
-Est quod dolor natus. Nihil provident omnis. Exercitationem voluptate earum. Earum doloremque voluptates quia eos qui suscipit dicta.
- 
-Optio ea sit minima cum consequatur at ut incidunt. Ea voluptatem iure modi officiis. Distinctio eum nemo soluta nulla.
+Story Protagonist: Dan, 23 years old. An avid EDM listener who loves going to raves and music festivals. Dan is having trouble finding people to accompany him to the music festival Ultra in Miami. 
+
+MusicMatch and Dan: Having called and texted every one of his friends who he think might enjoy Ultra, Dan sighs in resignation. He really doesn't want to go to the festival alone but he also doesn't want to skip it as his favorite artists are gonna be performing. After seeing an ad for MusicMatch, he heads over to their website where he clicks on MusicMatch Connect hoping to connect with people. Upon selecting Connect, he chooses the looking for group option and then looks for nearby concerts. After selecting Ultra Miami, he scrolls through the forum where he sees posts from different people who are also looking to go with people. He sees a post about a group of 5 people who are extremely excited to see the Gryffin performance and decides to text them after seeing their discord ids in the post. 
+
+Fast forward a week and a half: Dan and his new group of friends are at Ultra having the time of their lives. 
 
 ## HTML & CSS Mockup
 
 Reiciendis velit dolorum voluptas earum. Rerum nobis accusantium laudantium minima incidunt. Magnam aut minus minus. Cumque unde voluptatibus soluta molestias perspiciatis aperiam accusantium laborum quo.
 
-![HTML & CSS Mockup 1](mockup-1.png)
+![HTML & CSS Mockup 1](home.png)
 
-Natus est molestias est et autem non in. Laudantium consequatur facilis perferendis. Saepe similique sapiente rem ut. Laudantium natus voluptas delectus molestiae ab omnis quidem. Maxime cumque porro ea deleniti incidunt nihil cupiditate sunt. Nihil eaque porro nemo veritatis.
+The given image is a mockup for our homepage. It is quite similar to the wireframe. We intend on making it more aesthetic once we finalize the color schemes and content. 
 
-![HTML & CSS Mockup 2](mockup-2.png)
+![HTML & CSS Mockup 2](songselect.png)
 
-Ipsam architecto nulla ut dolor dolor sit mollitia deleniti minus. Velit quia iste.
+Similarly, this is a very rudimentary mockup implementation of our Discover song queue. 
 
-## References
-
-- [Link 1](https://example.com)
-- [Link 2](https://example.com)
-- [Link 3](https://example.com)
