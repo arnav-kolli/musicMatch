@@ -61,7 +61,7 @@ Fast forward a week and a half: Dan and his new group of friends are at Ultra ha
 
 ## HTML & CSS Mockup
 
-Reiciendis velit dolorum voluptas earum. Rerum nobis accusantium laudantium minima incidunt. Magnam aut minus minus. Cumque unde voluptatibus soluta molestias perspiciatis aperiam accusantium laborum quo.
+Our mockup created through HTML includes 3 pages: login page, home page, and the song selection page.
 
 
 ![HTML & CSS Mockup 1](loginmockup.png)
@@ -73,5 +73,5 @@ The given image is a mockup for our homepage. It is quite similar to the wirefra
 
 ![HTML & CSS Mockup 2](songselect.png)
 
-Similarly, this is a very rudimentary mockup implementation of our Discover song queue. 
+Similarly, this is a very rudimentary mockup implementation of our Discover song queue. The key information shown about the song will include its cover art, song title and artist, and album name. 
 
