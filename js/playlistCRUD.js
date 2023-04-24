@@ -6,11 +6,12 @@ const db = new Pouchdb("playlist");
 //data:{name}
 async function createPlaylist(data){
     try{
-        await db.get(data.name)
+        const response = await db.get(data.name);
+        return response;
         //display that the name exists
     }
     catch{
-        await db.put({})
+        await db.put({name:data.name});
     }
 }
 
