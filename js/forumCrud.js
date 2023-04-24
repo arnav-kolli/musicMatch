@@ -16,7 +16,7 @@ export async function createPost(response, data) {
 }
   
 // Function to retrieve all forum posts
-export async function getAllPosts(response) {
+export async function getAllPosts() {
     return db.allDocs({ include_docs: true })
       .then(response => response.rows.map(row => row.doc));
 }
@@ -55,7 +55,7 @@ app.post('/create', async (request, response) => {
 });
 
 app.get('/readAll', async (request, response) => {
-  getAllPosts();
+  response = getAllPosts();
 });
 
 app.put('/update', async (request, response) => {
