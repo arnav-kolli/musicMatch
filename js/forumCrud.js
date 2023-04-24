@@ -60,11 +60,11 @@ app.get('/readAll', async (request, response) => {
 
 app.put('/update', async (request, response) => {
   const options = request.body;
-  updatePost(options);
+  updatePost(options.id, options);
 });
 
 app.delete('/delete', async (request, response) => {
-  const options = request.query
+  const options = request.body
   deleteCounter(options.id)
 })
 
