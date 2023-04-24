@@ -73,5 +73,5 @@ app.get('*', async (request, response) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server started on poart ${port}`);
+  console.log(`Server started on port ${port}`);
 });
