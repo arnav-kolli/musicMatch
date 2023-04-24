@@ -43,11 +43,12 @@ export async function deletePost(id) {
 }
 
 const app = express();
-const port = 3000;
+const port = 3001;
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/client', express.static('client'));
+
 
 app.post('/create', async (request, response) => {
   const options = request.body;
