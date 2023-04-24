@@ -6,19 +6,31 @@ const db = new Pouchdb("playlist");
 //data:{name}
 async function createPlaylist(data){
     try{
-        const response = await db.get(data.name);
-        return response;
-        //display that the name exists
+        await db.get(data.name);
+        console.log("name exists")
+        //added functionality letting user know that the name already exists
     }
     catch{
-        await db.put({name:data.name});
+        await db.put({_id:data.name,songs:[]});
     }
 }
 
-//async function readPlaylist(name){}
+async function readPlaylist(name){
+    try{
+        let data = await db.get(name);
+        return songs.songs;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
 
 
-//async function updatePlaylist{}
+async function updatePlaylist(name,song){
+    try{
+        const curData = await db.get(name)
+    }
+}
 
 //async function deleteSong(playlist,songname){}
 
