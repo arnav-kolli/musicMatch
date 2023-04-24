@@ -16,3 +16,4 @@ for (let i = 0; i < posts.length; i++){
     post.innerHTML = ("<div>"+posts[i]["artistName"] +"</div>" + "<div>"+posts[i]["eventDate"]+"</div>"
                     +"<div>"+posts[i]["eventName"] +"</div>" + "<div>"+posts[i]["eventDate"]+"</div>"
                     +"<div>"+posts[i]["Description"] +"</div>" + "<div>"+posts[i]["DatePosted"]+"</div>")
+}
