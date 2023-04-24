@@ -16,7 +16,7 @@ export async function createPost(response, data) {
 }
   
 // Function to retrieve all forum posts
-export async function getAllPosts(response) {
+export async function getAllPosts() {
     return db.allDocs({ include_docs: true })
       .then(response => response.rows.map(row => row.doc));
 }
@@ -56,16 +56,16 @@ app.post('/create', async (request, response) => {
 });
 
 app.get('/readAll', async (request, response) => {
-  getAllPosts();
+  response = getAllPosts();
 });
 
 app.put('/update', async (request, response) => {
   const options = request.body;
-  updatePost(options);
+  updatePost(options.id, options);
 });
 
 app.delete('/delete', async (request, response) => {
-  const options = request.query
+  const options = request.body
   deleteCounter(options.id)
 })
 
@@ -74,5 +74,5 @@ app.get('*', async (request, response) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server started on poart ${port}`);
+  console.log(`Server started on port ${port}`);
 });

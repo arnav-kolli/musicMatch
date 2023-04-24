@@ -6,12 +6,12 @@
 
 let forums = document.getElementById("forums")
 
-let postOne = crud.createPost({"artistName": "Anvesh Sunkara", "eventDate": new Date("2023-07-30"), "eventName": "Coachella", "Description": "Anvesh is performing", "DatePosted": new Date("2023-04-23")});
-let postTwo = crud.createPost({"artistName": "Aayush Patel", "eventDate": new Date("2023-11-05"), "eventName": "Ultra Miami", "Description": "Aayush is performing", "DatePosted": new Date("2023-04-24")});
-let postThree = crud.createPost({"artistName": "Arnav Kolli", "eventDate": new Date("2023-04-12"), "eventName": "Rolling Loud NYC", "Description": "Arnav is performing", "DatePosted": new Date("2023-04-25")});
-let postFour = crud.createPost({"artistName": "Rahul Vedula", "eventDate": new Date("2023-08-02"), "eventName": "GovBall", "Description": "Rahul is performing", "DatePosted": new Date("2023-04-26")});
+let postOne = crud.crudCreatePost({"artistName": "Anvesh Sunkara", "eventDate": new Date("2023-07-30"), "eventName": "Coachella", "Description": "Anvesh is performing", "DatePosted": new Date("2023-04-23")});
+let postTwo = crud.crudCreatePost({"artistName": "Aayush Patel", "eventDate": new Date("2023-11-05"), "eventName": "Ultra Miami", "Description": "Aayush is performing", "DatePosted": new Date("2023-04-24")});
+let postThree = crud.crudCreatePost({"artistName": "Arnav Kolli", "eventDate": new Date("2023-04-12"), "eventName": "Rolling Loud NYC", "Description": "Arnav is performing", "DatePosted": new Date("2023-04-25")});
+let postFour = crud.crudCreatePost({"artistName": "Rahul Vedula", "eventDate": new Date("2023-08-02"), "eventName": "GovBall", "Description": "Rahul is performing", "DatePosted": new Date("2023-04-26")});
 
-let posts = await crud.getAllPosts();
+posts = crud.getAllPosts();
 
 
 //posts = await *insert function to retrieve posts*
