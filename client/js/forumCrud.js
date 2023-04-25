@@ -1,5 +1,5 @@
 import PouchDB from 'pouchdb';
-import express from 'express';
+import express, { request, response } from 'express';
 import logger from 'morgan';
 
 const db = new PouchDB('forum');
@@ -45,6 +45,7 @@ export async function deletePost(id) {
 }
 
 //PlaylistCrud
+
 //data:{name}
 export async function createPlaylist(data){
   try{
@@ -57,7 +58,7 @@ export async function createPlaylist(data){
   }
 }
 
-export async function readPlaylists(){
+export async function readAllPlaylists(){
   try{
     const docs = await plist.allDocs();
     return docs.rows.map(row => row.id);
@@ -151,6 +152,48 @@ app.delete('/delete', async (request, response) => {
   deleteCounter(options.id)
 })
 
+app.post("/createPlaylist",async(request,response)=>{
+  try{
+    const options = request.body;
+    await createPlaylist(options);
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
+app.get('/readPlaylists',async (request,response)=>{
+  try {
+    let res = await readAllPlaylists();
+    response.status(200).json({message: "list returned successfully.", data: res});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error reading"});
+  }
+})
+
+app.get('/readSongs',async (request,response)=>{
+  try{
+    const options = request.query;
+    let res = await readPlaylist(options.name);
+    response.json({name:options.name,songs:res});
+  }
+  catch(error){
+    response.status(400).json({error:"Errpr reading"});
+  }
+})
+
+app.put('/addSong',async (request,response)=>{
+  try{
+    const options = request.query;
+    updatePlaylist(options.name,options.songID);
+    // response.json("Successful addition")
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
 app.get('*', async (request, response) => {
   response.status(404).send(`Not found: ${request.path}`);
 });
@@ -158,3 +201,4 @@ app.get('*', async (request, response) => {
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+
