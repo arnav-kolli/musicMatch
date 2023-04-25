@@ -7,10 +7,11 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const postData = {
-    'event-name': formData.get('event-name'),
+    'artist-name': formData.get('artist-name'),
     'event-date': formData.get('event-date'),
-    'event-location': formData.get('event-location'),
-    'post-content': formData.get('post-content')
+    'event-name': formData.get('event-name'),
+    'post-content': formData.get('post-content'),
+    'date-posted': formData.get('date-posted')
   };
   try {
     const response = await createPost(postData);

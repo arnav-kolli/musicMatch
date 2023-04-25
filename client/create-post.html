@@ -10,22 +10,26 @@
   <h1>Create Post</h1>
   
   <form method="POST" action="submit-post.php">
-    <label for="event-name">Event Name:</label>
-    <input type="text" id="event-name" placeholder="Example: Drake Concert"name="event-name" required>
+    <label for="artist-name">Artist Name:</label>
+    <input type="text" id="artist-name" placeholder="Example: Drake"name="artist-name" required>
     <br>
     
     <label for="event-date">Event Date:</label>
     <input type="date" id="event-date" name="event-date" required>
     <br>
     
-    <label for="event-location">Event Location:</label>
-    <input type="text" id="event-location" placeholder="Example: Boston, MA"name="event-location" required>
+    <label for="event-name">Event Name:</label>
+    <input type="text" id="event-name" placeholder="Example: Coachella"name="event-name" required>
     <br>
     
-    <label for="post-content">Post Content:</label>
+    <label for="post-content">Description:</label>
     <textarea id="post-content" name="post-content" rows="10" cols="50" placeholder="Example: Hi everyone! My name is Aayush and I am interested in attending the Drake concert on 6/1/2023. Reach out to me at aaypatel@umass.edu if you are interested!" required></textarea>
     <br>
     
+    <label for="date-posted">Date Posted:</label>
+    <input type="date" id="date-posted" name="date-posted" required>
+    <br>
+
     <input type="submit" value="Create Post">
   </form>
   
