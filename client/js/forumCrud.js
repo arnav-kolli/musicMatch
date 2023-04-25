@@ -65,14 +65,13 @@ app.post('/create', async (request, response) => {
 app.get('/readAll', async (request, response) => {
   try {
     let res = await getAllPosts();
-    response.json(res);
-    response.status(200).json({message: "Post returned successfully."});
+    response.status(200).json({message: "Post returned successfully.", data: res});
   } catch (error) {
     console.error(error);
     response.status(400).json({error: "Error in create."});
   }
-  
 });
+
 
 app.put('/update', async (request, response) => {
   const options = request.body;

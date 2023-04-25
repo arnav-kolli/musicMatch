@@ -14,7 +14,6 @@ export async function crudCreatePost(data) {
       const response = await fetch(`/readAll`, {
         method: 'GET',
       });
-      console.log(response)
       let ret = await response.json();
       return ret
     } catch (err) {
