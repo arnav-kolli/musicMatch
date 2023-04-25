@@ -1,5 +1,5 @@
 
-import { createPost } from './forumCrud.js';
+import { createPost, getAllPosts } from './forumCrud.js';
 
 const REDIRECT_URI = 'http://127.0.0.1:5501/client/Home.html';
 
@@ -18,7 +18,20 @@ form.addEventListener('submit', async (event) => {
   try {
     const response = await createPost(postData);
     console.log(response);
-    window.location.href = REDIRECT_URI;// Do something else after the post is created, e.g. redirect to the post page
+    // Display all the posts
+    const postContainer = document.querySelector('#post-container');
+    const posts = await getAllPosts();
+    posts.forEach(post => {
+      const postElement = document.createElement('div');
+      postElement.innerHTML = `
+        <h2>${post['event-name']}</h2>
+        <p>${post['post-content']}</p>
+        <small>Posted for ${post['artist-name']} on ${post['date-posted']}</small>
+      `;
+      postContainer.appendChild(postElement);
+    });
+    // Redirect to the post page
+    window.location.href = REDIRECT_URI;
   } catch (error) {
     console.error(error);
   }
