@@ -194,6 +194,26 @@ app.put('/addSong',async (request,response)=>{
   }
 })
 
+app.put('/deleteSong',async(request,response)=>{
+  try{
+    const options = request.query;
+    deleteSong(options.name,options.songID);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
+app.delete('/deletePlaylist',async(request,response)=>{
+  try{
+    const options = request.body;
+    deletePlaylist(options.name);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
 app.get('*', async (request, response) => {
   response.status(404).send(`Not found: ${request.path}`);
 });
