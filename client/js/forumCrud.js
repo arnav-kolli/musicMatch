@@ -63,8 +63,15 @@ app.post('/create', async (request, response) => {
 });
 
 app.get('/readAll', async (request, response) => {
+  try {
+    let res = await getAllPosts();
+    response.json(res);
+    response.status(200).json({message: "Post returned successfully."});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error in create."});
+  }
   
-  response.json(getAllPosts());
 });
 
 app.put('/update', async (request, response) => {
