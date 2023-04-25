@@ -3,6 +3,7 @@ import express from 'express';
 import logger from 'morgan';
 
 const db = new PouchDB('forum');
+const plist = new PouchDB('Playlist');
 
 // Function to create a new forum post
 export async function createPost(data) {
@@ -41,6 +42,73 @@ export async function deletePost(id) {
       .then(doc => {
         return db.remove(doc);
       });
+}
+
+//PlaylistCrud
+//data:{name}
+export async function createPlaylist(data){
+  try{
+      await plist.get(data.name);
+      console.log("name exists");
+      //added functionality letting user know that the name already exists
+  }
+  catch{
+      await plist.put({_id:data.name,songs:[]});
+  }
+}
+
+export async function readPlaylists(){
+  try{
+    const docs = await plist.allDocs();
+    return docs.rows.map(row => row.id);
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+export async function readPlaylist(name){
+  try{
+      let data = await plist.get(name);
+      return songs.songs;
+  }
+  catch(err){
+      console.log(err);
+  }
+}
+
+//songID will be used in the API call and name,artist album etc will be available at the call
+//add songs to playlist
+export async function updatePlaylist(name,songID){
+  try{
+      const curData = await plist.get(name);
+      curData.songs.push(song);
+      plist.put(curData);
+  }
+  catch(err){
+      console.log(err);
+  }
+}
+
+//deletes a song from the playlist
+//(may have to change functionality to have index of song instead of ID)
+export async function deleteSong(playlist,songID){
+  try{
+      const data = await plist.get(playlist);
+      let ind = data.songs.indexOf(songID);
+      data.songs.splice(ind,1);
+  }
+  catch(err){
+      console.log(err);
+  }
+}
+
+export async function deletePlaylist(playlist){
+  try{
+      plist.remove(playlist)
+  }
+  catch(err){
+      console.log(err)
+  }
 }
 
 const app = express();

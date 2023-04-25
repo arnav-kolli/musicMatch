@@ -1,23 +1,23 @@
-import Pouchdb from 'pouchdb';
+import Pouchplist from 'pouchplist';
 
-const db = new Pouchdb("playlist");
+const plist = new Pouchplist("playlist");
 
 
 //data:{name}
 async function createPlaylist(data){
     try{
-        await db.get(data.name);
+        await plist.get(data.name);
         console.log("name exists")
         //added functionality letting user know that the name already exists
     }
     catch{
-        await db.put({_id:data.name,songs:[]});
+        await plist.put({_id:data.name,songs:[]});
     }
 }
 
 async function readPlaylist(name){
     try{
-        let data = await db.get(name);
+        let data = await plist.get(name);
         return songs.songs;
     }
     catch(err){
@@ -29,9 +29,9 @@ async function readPlaylist(name){
 //add songs to playlist
 async function updatePlaylist(name,songID){
     try{
-        const curData = await db.get(name);
+        const curData = await plist.get(name);
         curData.songs.push(song);
-        db.put(curData);
+        plist.put(curData);
     }
     catch(err){
         console.log(err);
@@ -42,7 +42,7 @@ async function updatePlaylist(name,songID){
 //(may have to change functionality to have index of song instead of ID)
 async function deleteSong(playlist,songID){
     try{
-        const data = await db.get(playlist);
+        const data = await plist.get(playlist);
         let ind = data.songs.indexOf(songID);
         data.songs.splice(ind,1);
     }
@@ -53,7 +53,7 @@ async function deleteSong(playlist,songID){
 
 async function deletePlaylist(playlist){
     try{
-        db.remove(playlist)
+        plist.remove(playlist)
     }
     catch(err){
         console.log(err)
