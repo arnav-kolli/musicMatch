@@ -5,18 +5,19 @@ import logger from 'morgan';
 const db = new PouchDB('forum');
 
 // Function to create a new forum post
-export async function createPost(response, data) {
+export async function createPost(data) {
     try {
-        const response = await db.post(data);
-        response.json({"message": "create done"});
+        await db.post(data);
+        //response.json({"message": "create done"});
       } catch (error) {
         console.error(error);
-        response.status(400).json({error: "error in create"})
+        //response.status(400).json({error: "error in create"})
       }
 }
   
 // Function to retrieve all forum posts
 export async function getAllPosts() {
+  console.log("entered forcrud")
     return db.allDocs({ include_docs: true })
       .then(response => response.rows.map(row => row.doc));
 }
@@ -51,12 +52,19 @@ app.use('/client', express.static('client'));
 
 
 app.post('/create', async (request, response) => {
-  const options = request.body;
-  createPost(options);
+  try {
+    const options = request.body;
+    await createPost(options);
+    response.status(200).json({message: "Post created successfully."});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error in create."});
+  }
 });
 
 app.get('/readAll', async (request, response) => {
-  response = getAllPosts();
+  
+  response.json(getAllPosts());
 });
 
 app.put('/update', async (request, response) => {

@@ -1,16 +1,22 @@
 export async function crudCreatePost(data) {
-    const response = await fetch(`/create`, {
+    await fetch(`/create`, {
       method: 'POST',
       body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
   }
   
   export async function crudReadAllPosts() {
     try {
+      console.log("in crud")
       const response = await fetch(`/readAll`, {
         method: 'GET',
       });
-      return response;
+      console.log(response)
+      let ret = await response.json();
+      return ret
     } catch (err) {
       console.log(err);
     }
