@@ -3,7 +3,7 @@ body {
     background-color: #f8f8f8;
   }
   
-  header {
+  header { 
     background-color: #333;
     color: white;
     padding: 10px;
@@ -15,7 +15,7 @@ body {
   
   main {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 20px auto; 
     background-color: white;
     padding: 20px;
     border-radius: 5px;

@@ -32,7 +32,7 @@ async function main() {
   // let posts = [{}]
   let coolData = posts.data;
   for (let i = 0; i < coolData.length; i++) {
-    console.log("coolkid lamoooooooooo")
+    console.log("coolkid lamoooooooooo") //test
     if (coolData[i].hasOwnProperty("artistName")) {
       let post = document.createElement("div");
       post.id = coolData[i]["id"];
