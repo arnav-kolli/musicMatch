@@ -1,14 +1,1 @@
-2023/04/24-21:54:21.176 a950 Recovering log #103
-2023/04/24-21:54:21.176 a950 Level-0 table #105: started
-2023/04/24-21:54:21.188 a950 Level-0 table #105: 688 bytes OK
-2023/04/24-21:54:21.192 a950 Delete type=0 #103
-2023/04/24-21:54:21.192 a950 Delete type=3 #101
-2023/04/24-21:54:21.197 6dc4 Compacting 4@0 + 1@1 files
-2023/04/24-21:54:21.197 6dc4 Generated table #107@0: 75 keys, 8496 bytes
-2023/04/24-21:54:21.197 6dc4 Compacted 4@0 + 1@1 files => 8496 bytes
-2023/04/24-21:54:21.197 6dc4 compacted to: files[ 0 1 0 0 0 0 0 ]
-2023/04/24-21:54:21.204 6dc4 Delete type=2 #94
-2023/04/24-21:54:21.204 6dc4 Delete type=2 #96
-2023/04/24-21:54:21.204 6dc4 Delete type=2 #99
-2023/04/24-21:54:21.204 6dc4 Delete type=2 #102
-2023/04/24-21:54:21.204 6dc4 Delete type=2 #105
+2023/04/24-22:00:03.554673 16e1af000 Delete type=3 #104
