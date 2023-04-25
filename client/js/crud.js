@@ -21,12 +21,15 @@ export async function crudCreatePost(data) {
     }
   }
   
-  export async function crudUpdatePost(data) {
+  export async function crudUpdatePost(id, data) {
     // TODO #5: Complete the updateCounter function
     try{
-      const response = await fetch(`/update`, {
+      const response = await fetch(`/update/${id}`, {
         method: 'PUT',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
     } catch (err) {
       console.log(err);
