@@ -26,11 +26,11 @@ async function readPlaylist(name){
 }
 
 
-async function updatePlaylist(name,song){
-    try{
-        const curData = await db.get(name)
-    }
-}
+// async function updatePlaylist(name,song){
+//     try{
+//         const curData = await db.get(name)
+//     }
+// }
 
 //async function deleteSong(playlist,songname){}
 

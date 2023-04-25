@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Create Post - Event Forum</title>
+  <link rel="stylesheet" href="./createForum.css">
+  <script src="./createForumPost.js"></script>
 </head>
 <body>
   <h1>Create Post</h1>
   
   <form method="POST" action="submit-post.php">
     <label for="event-name">Event Name:</label>
-    <input type="text" id="event-name" name="event-name" required>
+    <input type="text" id="event-name" placeholder="Example: Drake Concert"name="event-name" required>
     <br>
     
     <label for="event-date">Event Date:</label>
@@ -17,11 +19,11 @@
     <br>
     
     <label for="event-location">Event Location:</label>
-    <input type="text" id="event-location" name="event-location" required>
+    <input type="text" id="event-location" placeholder="Example: Boston, MA"name="event-location" required>
     <br>
     
     <label for="post-content">Post Content:</label>
-    <textarea id="post-content" name="post-content" rows="10" cols="50" required></textarea>
+    <textarea id="post-content" name="post-content" rows="10" cols="50" placeholder="Example: Hi everyone! My name is Aayush and I am interested in attending the Drake concert on 6/1/2023. Reach out to me at aaypatel@umass.edu if you are interested!" required></textarea>
     <br>
     
     <input type="submit" value="Create Post">
