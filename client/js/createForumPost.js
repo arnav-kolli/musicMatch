@@ -7,7 +7,7 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const postData = {
-    'artist-name': formData.get('artist-name'),
+    'artist-name': formData.get('artist-name'), //aspects that align with crud
     'event-date': formData.get('event-date'),
     'event-name': formData.get('event-name'),
     'post-content': formData.get('post-content'),
