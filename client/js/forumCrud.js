@@ -1,8 +1,9 @@
 import PouchDB from 'pouchdb';
-import express from 'express';
+import express, { request, response } from 'express';
 import logger from 'morgan';
 
 const db = new PouchDB('forum');
+const plist = new PouchDB('Playlist');
 
 // Function to create a new forum post
 export async function createPost(data) {
@@ -41,6 +42,76 @@ export async function deletePost(id) {
       .then(doc => {
         return db.remove(doc);
       });
+}
+
+//PlaylistCrud
+
+//data:{name}
+export async function createPlaylist(data){
+  try{
+      await plist.get(data.name);
+      // console.log("name exists");
+      //added functionality letting user know that the name already exists
+  }
+  catch{
+      await plist.put({_id:data.name,songs:[]});
+  }
+}
+
+export async function readAllPlaylists(){
+  try{
+    const docs = await plist.allDocs();
+    return docs.rows.map(row => row.id);
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+export async function readPlaylist(name){
+  try{
+      let data = await plist.get(name);
+      return data.songs;
+  }
+  catch(err){
+      console.log(err);
+  }
+}
+
+//songID will be used in the API call and name,artist album etc will be available at the call
+//add songs to playlist
+export async function updatePlaylist(name,songID){
+  try{
+      const curData = await plist.get(name);
+      curData.songs.push(songID);
+      // console.log(curData.songs)
+      plist.put({_id:name,_rev:curData._rev,songs:curData.songs});
+  }
+  catch(err){
+      console.log(err);
+  }
+}
+
+//deletes a song from the playlist
+//(may have to change functionality to have index of song instead of ID)
+export async function deleteSong(playlist,songID){
+  try{
+      const data = await plist.get(playlist);
+      let ind = data.songs.indexOf(songID);
+      data.songs.splice(ind,1);
+  }
+  catch(err){
+      console.log(err);
+  }
+}
+
+export async function deletePlaylist(playlist){
+  console.log(playlist);
+  try{
+      await plist.remove(playlist)
+  }
+  catch(err){
+      console.log(err)
+  }
 }
 
 const app = express();
@@ -83,6 +154,68 @@ app.delete('/delete', async (request, response) => {
   deleteCounter(options.id)
 })
 
+app.post("/createPlaylist",async(request,response)=>{
+  try{
+    const options = request.body;
+    await createPlaylist(options);
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
+app.get('/readPlaylists',async (request,response)=>{
+  try {
+    let res = await readAllPlaylists();
+    response.status(200).json({message: "list returned successfully.", playlists: res});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error reading"});
+  }
+})
+
+app.get('/readSongs',async (request,response)=>{
+  try{
+    const options = request.query;
+    let res = await readPlaylist(options.name);
+    response.json({name:options.name,songs:res});
+  }
+  catch(error){
+    response.status(400).json({error:"Errpr reading"});
+  }
+})
+
+app.put('/addSong',async (request,response)=>{
+  try{
+    const options = request.query;
+    updatePlaylist(options.name,options.songID);
+    // response.json("Successful addition")
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
+app.put('/deleteSong',async(request,response)=>{
+  try{
+    const options = request.query;
+    deleteSong(options.name,options.songID);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
+app.delete('/deletePlaylist',async(request,response)=>{
+  try{
+    const options = request.query;
+    deletePlaylist(options.name);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
 app.get('*', async (request, response) => {
   response.status(404).send(`Not found: ${request.path}`);
 });
@@ -90,3 +223,4 @@ app.get('*', async (request, response) => {
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+

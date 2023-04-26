@@ -1,25 +1,80 @@
-import Pouchdb from 'pouchdb';
-
-const db = new Pouchdb("playlist");
 
 
-//data:{name}
-async function createPlaylist(data){
+
+export async function crudCreatePlaylist(data) {
     try{
-        const response = await db.get(data.name);
-        return response;
-        //display that the name exists
+    await fetch(`/createPlaylist`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     }
-    catch{
-        await db.put({name:data.name});
+    catch(err){
+        console.log(err);
     }
-}
+  }
+  
+  export async function crudReadPlaylists() {
+    try {
+      const response = await fetch(`/readPlaylists`, {
+        method: 'GET',
+      });
+      let ret = await response.json();
+      return ret
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  export async function crudReadSongs(data) {
+    try {
+      const response = await fetch(`/readSongs?name=${data.name}`, {
+        method: 'GET',
+        // body: JSON.stringify(data)
 
-//async function readPlaylist(name){}
+      });
+      let ret = await response.json();
+      return ret
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
+  //Adding songs to playlist
+  //data:{playlistname,songname}
+  export async function crudUpdatePlaylist(data) {
+    try{
+      const response = await fetch(`/addSong?name=${data.name}&songID=${data.song}`, {
+        method: 'PUT',
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-//async function updatePlaylist{}
-
-//async function deleteSong(playlist,songname){}
-
-//async function deletePlaylist
+  //Delete Playlist
+  export async function crudDeletePlaylist(data) {
+    try{
+      const response = await fetch(`/deletePlaylist?name=${data.name}`, {
+        method: 'DELETE',
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  //remove songs from playlist
+  export async function crudDeleteSong(data) {
+    try{
+      const response = await fetch(`/deleteSong`, {
+        method: 'PUT',
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
