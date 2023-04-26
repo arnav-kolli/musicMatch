@@ -50,7 +50,7 @@ export async function deletePost(id) {
 export async function createPlaylist(data){
   try{
       await plist.get(data.name);
-      console.log("name exists");
+      // console.log("name exists");
       //added functionality letting user know that the name already exists
   }
   catch{
@@ -70,7 +70,7 @@ export async function readAllPlaylists(){
 export async function readPlaylist(name){
   try{
       let data = await plist.get(name);
-      return songs.songs;
+      return data.songs;
   }
   catch(err){
       console.log(err);
@@ -82,8 +82,9 @@ export async function readPlaylist(name){
 export async function updatePlaylist(name,songID){
   try{
       const curData = await plist.get(name);
-      curData.songs.push(song);
-      plist.put(curData);
+      curData.songs.push(songID);
+      // console.log(curData.songs)
+      plist.put({_id:name,_rev:curData._rev,songs:curData.songs});
   }
   catch(err){
       console.log(err);
@@ -104,8 +105,9 @@ export async function deleteSong(playlist,songID){
 }
 
 export async function deletePlaylist(playlist){
+  console.log(playlist);
   try{
-      plist.remove(playlist)
+      await plist.remove(playlist)
   }
   catch(err){
       console.log(err)
@@ -165,7 +167,7 @@ app.post("/createPlaylist",async(request,response)=>{
 app.get('/readPlaylists',async (request,response)=>{
   try {
     let res = await readAllPlaylists();
-    response.status(200).json({message: "list returned successfully.", data: res});
+    response.status(200).json({message: "list returned successfully.", playlists: res});
   } catch (error) {
     console.error(error);
     response.status(400).json({error: "Error reading"});
@@ -206,7 +208,7 @@ app.put('/deleteSong',async(request,response)=>{
 
 app.delete('/deletePlaylist',async(request,response)=>{
   try{
-    const options = request.body;
+    const options = request.query;
     deletePlaylist(options.name);
   }
   catch(err){

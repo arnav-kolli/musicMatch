@@ -1,65 +1,5 @@
-import { query } from 'express';
-import Pouchplist from 'pouchplist';
-
-const plist = new Pouchplist("playlist");
 
 
-//data:{name}
-async function createPlaylist(data){
-    try{
-        await plist.get(data.name);
-        console.log("name exists")
-        //added functionality letting user know that the name already exists
-    }
-    catch{
-        await plist.put({_id:data.name,songs:[]});
-    }
-}
-
-async function readPlaylist(name){
-    try{
-        let data = await plist.get(name);
-        return songs.songs;
-    }
-    catch(err){
-        console.log(err);
-    }
-}
-
-//songID will be used in the API call and name,artist album etc will be available at the call
-//add songs to playlist
-async function updatePlaylist(name,songID){
-    try{
-        const curData = await plist.get(name);
-        curData.songs.push(song);
-        plist.put(curData);
-    }
-    catch(err){
-        console.log(err);
-    }
-}
-
-//deletes a song from the playlist
-//(may have to change functionality to have index of song instead of ID)
-async function deleteSong(playlist,songID){
-    try{
-        const data = await plist.get(playlist);
-        let ind = data.songs.indexOf(songID);
-        data.songs.splice(ind,1);
-    }
-    catch(err){
-        console.log(err);
-    }
-}
-
-async function deletePlaylist(playlist){
-    try{
-        plist.remove(playlist)
-    }
-    catch(err){
-        console.log(err)
-    }
-}
 
 export async function crudCreatePlaylist(data) {
     try{
@@ -90,9 +30,9 @@ export async function crudCreatePlaylist(data) {
   
   export async function crudReadSongs(data) {
     try {
-      const response = await fetch(`/readSongs`, {
+      const response = await fetch(`/readSongs?name=${data.name}`, {
         method: 'GET',
-        body: JSON.stringify(data)
+        // body: JSON.stringify(data)
 
       });
       let ret = await response.json();
@@ -106,7 +46,7 @@ export async function crudCreatePlaylist(data) {
   //data:{playlistname,songname}
   export async function crudUpdatePlaylist(data) {
     try{
-      const response = await fetch(`/addSong`, {
+      const response = await fetch(`/addSong?name=${data.name}&songID=${data.song}`, {
         method: 'PUT',
         body: JSON.stringify(data)
       });
@@ -118,7 +58,7 @@ export async function crudCreatePlaylist(data) {
   //Delete Playlist
   export async function crudDeletePlaylist(data) {
     try{
-      const response = await fetch(`/deletePlaylist`, {
+      const response = await fetch(`/deletePlaylist?name=${data.name}`, {
         method: 'DELETE',
         body: JSON.stringify(data)
       });
