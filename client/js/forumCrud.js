@@ -1,9 +1,17 @@
 import PouchDB from 'pouchdb';
+import pg, { Pool } from 'pg';
 import express, { request, response } from 'express';
 import logger from 'morgan';
 
 const db = new PouchDB('forum');
 const plist = new PouchDB('Playlist');
+
+const connectionString = process.env.DATABASE_URL;
+const poolConfig = {
+  connectionString: connectionString
+}
+let pool = new Pool(poolConfig)
+
 
 // Function to create a new forum post
 export async function createPost(data) {
