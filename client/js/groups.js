@@ -33,24 +33,24 @@ async function main() {
   let coolData = posts.data;
   for (let i = 0; i < coolData.length; i++) {
     console.log("coolkid lamoooooooooo") //test
-    if (coolData[i].hasOwnProperty("artistName")) {
+    if (coolData[i].hasOwnProperty("artist_name")) {
       let post = document.createElement("div");
       post.id = coolData[i]["id"];
       post.innerHTML =
         "<div>" +
-        coolData[i]["artistName"] +
+        coolData[i]["artist_name"] +
         "</div>" +
         "<div>" +
-        coolData[i]["eventName"] +
+        coolData[i]["event_name"] +
         "</div>" +
         "<div>" +
-        coolData[i]["eventDate"] +
+        coolData[i]["event_date"] +
         "</div>" +
         "<div>" +
-        coolData[i]["Description"] +
+        coolData[i]["description"] +
         "</div>" +
         "<div>" +
-        coolData[i]["DatePosted"] +
+        coolData[i]["date_posted"] +
         "</div>";
       forums.appendChild(post);
     } else {

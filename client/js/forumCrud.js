@@ -30,8 +30,11 @@ export async function createPost(data) {
 // Function to retrieve all forum posts
 export async function getAllPosts() {
   console.log("entered forcrud")
-
-  return db.allDocs({ include_docs: true }).then(response => response.rows.map(row => row.doc));
+  const queryText = 'SELECT * FROM forums'
+  let data = (await pool.query(queryText))
+  console.log("rows", data.rows)
+  //db.allDocs({ include_docs: true }).then(response => response.rows.map(row => row.doc));
+  return data.rows
 }
   
 // Function to retrieve a specific forum post by ID
