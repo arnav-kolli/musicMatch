@@ -21,20 +21,17 @@ export async function createPost(data) {
     try {
         await db.post(data);
         const queryText = 'INSERT INTO forums(artist_name, event_date, event_name, description, date_posted) VALUES($1, $2, $3, $4, $5);';
-        console.log("elephant", [data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
         await pool.query(queryText,[data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
-        //response.json({"message": "create done"});
       } catch (error) {
         console.error(error);
-        //response.status(400).json({error: "error in create"})
       }
 }
   
 // Function to retrieve all forum posts
 export async function getAllPosts() {
   console.log("entered forcrud")
-    return db.allDocs({ include_docs: true })
-      .then(response => response.rows.map(row => row.doc));
+
+  return db.allDocs({ include_docs: true }).then(response => response.rows.map(row => row.doc));
 }
   
 // Function to retrieve a specific forum post by ID
