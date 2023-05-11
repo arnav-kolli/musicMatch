@@ -1,22 +1,28 @@
 import PouchDB from 'pouchdb';
-import pg, { Pool } from 'pg';
+import pg from 'pg';
 import express, { request, response } from 'express';
 import logger from 'morgan';
+import 'dotenv/config'
 
 const db = new PouchDB('forum');
 const plist = new PouchDB('Playlist');
+const { Pool } = pg
 
+console.log(process.env.DATABASE_URL)
 const connectionString = process.env.DATABASE_URL;
 const poolConfig = {
-  connectionString: connectionString
+  connectionString: connectionString,
 }
-let pool = new Pool(poolConfig)
+const pool = new Pool(poolConfig)
 
 
 // Function to create a new forum post
 export async function createPost(data) {
     try {
         await db.post(data);
+        const queryText = 'INSERT INTO forums(artist_name, event_date, event_name, description, date_posted) VALUES($1, $2, $3, $4, $5);';
+        console.log("elephant", [data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
+        await pool.query(queryText,[data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
         //response.json({"message": "create done"});
       } catch (error) {
         console.error(error);
