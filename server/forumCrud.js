@@ -1,6 +1,7 @@
 import express, { request, response } from 'express';
 import logger from 'morgan';
 import 'dotenv/config'
+import { database } from './database';
 
 const app = express();
 const port = 3001;
@@ -13,7 +14,7 @@ app.use('/client', express.static('client'));
 app.post('/create', async (request, response) => {
   try {
     const options = request.body;
-    await createPost(options);
+    await database.createPost(options);
     response.status(200).json({message: "Post created successfully."});
   } catch (error) {
     console.error(error);
@@ -23,7 +24,7 @@ app.post('/create', async (request, response) => {
 
 app.get('/readAll', async (request, response) => {
   try {
-    let res = await getAllPosts();
+    let res = await database.getAllPosts();
     response.status(200).json({message: "Post returned successfully.", data: res});
   } catch (error) {
     console.error(error);
@@ -34,18 +35,18 @@ app.get('/readAll', async (request, response) => {
 
 app.put('/update', async (request, response) => {
   const options = request.body;
-  updatePost(options.id, options);
+  database.updatePost(options.id, options);
 });
 
 app.delete('/delete', async (request, response) => {
   const options = request.body
-  deleteCounter(options.id)
+  database.deleteCounter(options.id)
 })
 
 app.post("/createPlaylist",async(request,response)=>{
   try{
     const options = request.body;
-    await createPlaylist(options);
+    await database.createPlaylist(options);
   }
   catch(err){
     console.log(err);
@@ -54,7 +55,7 @@ app.post("/createPlaylist",async(request,response)=>{
 
 app.get('/readPlaylists',async (request,response)=>{
   try {
-    let res = await readAllPlaylists();
+    let res = await database.readAllPlaylists();
     response.status(200).json({message: "list returned successfully.", playlists: res});
   } catch (error) {
     console.error(error);
@@ -65,7 +66,7 @@ app.get('/readPlaylists',async (request,response)=>{
 app.get('/readSongs',async (request,response)=>{
   try{
     const options = request.query;
-    let res = await readPlaylist(options.name);
+    let res = await database.readPlaylist(options.name);
     response.json({name:options.name,songs:res});
   }
   catch(error){
@@ -76,7 +77,7 @@ app.get('/readSongs',async (request,response)=>{
 app.put('/addSong',async (request,response)=>{
   try{
     const options = request.query;
-    updatePlaylist(options.name,options.songID);
+    database.updatePlaylist(options.name,options.songID);
     // response.json("Successful addition")
   }
   catch(err){
@@ -87,7 +88,7 @@ app.put('/addSong',async (request,response)=>{
 app.put('/deleteSong',async(request,response)=>{
   try{
     const options = request.query;
-    deleteSong(options.name,options.songID);
+    database.deleteSong(options.name,options.songID);
   }
   catch(err){
     console.log(err);
@@ -97,7 +98,7 @@ app.put('/deleteSong',async(request,response)=>{
 app.delete('/deletePlaylist',async(request,response)=>{
   try{
     const options = request.query;
-    deletePlaylist(options.name);
+    database.deletePlaylist(options.name);
   }
   catch(err){
     console.log(err);
