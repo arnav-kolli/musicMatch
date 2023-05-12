@@ -1,5 +1,7 @@
 import * as crud from "./playlistCRUD.js";
 
+console.log(window.localStorage.getItem("accessToken"));
+
 const create = document.getElementById("createPlaylist");
 const playlistname = document.getElementById("playlistname");
 const playlist = document.getElementById("playlist")

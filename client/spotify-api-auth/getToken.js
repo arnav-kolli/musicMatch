@@ -1,5 +1,4 @@
 var accessToken = "";
-const toEx = "TESTING"
 window.onload = function() {
     const code = new URLSearchParams(window.location.search).get('code');
     
@@ -23,7 +22,8 @@ window.onload = function() {
         // console.log('Authorization code:', code);
         accessToken = data.access_token
         console.log(accessToken);
-        console.log('Access token:', data.access_token);        
+        console.log('Access token:', data.access_token);   
+        window.localStorage.setItem("accessToken",accessToken)     
       });
     }
   };
