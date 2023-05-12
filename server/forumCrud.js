@@ -1,0 +1,114 @@
+import express, { request, response } from 'express';
+import logger from 'morgan';
+import 'dotenv/config'
+
+const app = express();
+const port = 3001;
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use('/client', express.static('client'));
+
+
+app.post('/create', async (request, response) => {
+  try {
+    const options = request.body;
+    await createPost(options);
+    response.status(200).json({message: "Post created successfully."});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error in create."});
+  }
+});
+
+app.get('/readAll', async (request, response) => {
+  try {
+    let res = await getAllPosts();
+    response.status(200).json({message: "Post returned successfully.", data: res});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error in create."});
+  }
+});
+
+
+app.put('/update', async (request, response) => {
+  const options = request.body;
+  updatePost(options.id, options);
+});
+
+app.delete('/delete', async (request, response) => {
+  const options = request.body
+  deleteCounter(options.id)
+})
+
+app.post("/createPlaylist",async(request,response)=>{
+  try{
+    const options = request.body;
+    await createPlaylist(options);
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
+app.get('/readPlaylists',async (request,response)=>{
+  try {
+    let res = await readAllPlaylists();
+    response.status(200).json({message: "list returned successfully.", playlists: res});
+  } catch (error) {
+    console.error(error);
+    response.status(400).json({error: "Error reading"});
+  }
+})
+
+app.get('/readSongs',async (request,response)=>{
+  try{
+    const options = request.query;
+    let res = await readPlaylist(options.name);
+    response.json({name:options.name,songs:res});
+  }
+  catch(error){
+    response.status(400).json({error:"Errpr reading"});
+  }
+})
+
+app.put('/addSong',async (request,response)=>{
+  try{
+    const options = request.query;
+    updatePlaylist(options.name,options.songID);
+    // response.json("Successful addition")
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
+app.put('/deleteSong',async(request,response)=>{
+  try{
+    const options = request.query;
+    deleteSong(options.name,options.songID);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
+app.delete('/deletePlaylist',async(request,response)=>{
+  try{
+    const options = request.query;
+    deletePlaylist(options.name);
+  }
+  catch(err){
+    console.log(err);
+  }
+});
+
+app.get('*', async (request, response) => {
+  response.status(404).send(`Not found: ${request.path}`);
+});
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
+
