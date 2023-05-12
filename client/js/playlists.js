@@ -1,5 +1,7 @@
 import * as crud from "./playlistCRUD.js";
 
+
+
 const create = document.getElementById("createPlaylist");
 const playlistname = document.getElementById("playlistname");
 const playlist = document.getElementById("playlist")
@@ -43,6 +45,16 @@ async function populateSongs(name){
         playlist.appendChild(label);
     })
 }
+
+var accessToken = "";
+function test(access){
+    accessToken = access
+    console.log(accessToken);
+}
+
+
+
+export {test};
 // newPlaylist("shut up my mom is calling");
 // crud.crudUpdatePlaylist({name:"shut up my mom is calling",song:"kyle"})
 // crud.crudDeletePlaylist({name:"shut up my mom is calling"});

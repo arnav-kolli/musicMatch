@@ -1,4 +1,5 @@
 var accessToken = "";
+const toEx = "TESTING"
 window.onload = function() {
     const code = new URLSearchParams(window.location.search).get('code');
     
@@ -44,4 +45,5 @@ buttonElem.addEventListener('click', async () => {
     });
 })
 
+export {toEx}
 
