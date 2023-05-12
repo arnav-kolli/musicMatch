@@ -1,0 +1,14 @@
+2023/05/12-13:33:48.906 7cfc Recovering log #235
+2023/05/12-13:33:48.907 7cfc Level-0 table #237: started
+2023/05/12-13:33:48.912 7cfc Level-0 table #237: 237 bytes OK
+2023/05/12-13:33:48.920 7cfc Delete type=0 #235
+2023/05/12-13:33:48.920 7cfc Delete type=3 #233
+2023/05/12-13:33:48.920 67fc Compacting 4@0 + 1@1 files
+2023/05/12-13:33:48.928 67fc Generated table #239@0: 213 keys, 25464 bytes
+2023/05/12-13:33:48.928 67fc Compacted 4@0 + 1@1 files => 25464 bytes
+2023/05/12-13:33:48.928 67fc compacted to: files[ 0 1 0 0 0 0 0 ]
+2023/05/12-13:33:48.928 67fc Delete type=2 #226
+2023/05/12-13:33:48.928 67fc Delete type=2 #228
+2023/05/12-13:33:48.928 67fc Delete type=2 #231
+2023/05/12-13:33:48.928 67fc Delete type=2 #234
+2023/05/12-13:33:48.928 67fc Delete type=2 #237
