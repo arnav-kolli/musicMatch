@@ -8,7 +8,7 @@ const port = 3001;
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/', express.static('client'));
+app.use('/client', express.static('client'));
 
 
 app.post('/create', async (request, response) => {

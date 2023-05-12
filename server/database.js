@@ -60,71 +60,73 @@ class Database{
         });
     }
 
-    async createPlaylist(data){
-    try{
-        await plist.get(data.name);
-        // console.log("name exists");
-        //added functionality letting user know that the name already exists
-    }
-    catch{
-        await plist.put({_id:data.name,songs:[]});
-    }
+    // PLAYLISTS tablename: playlists(song_id user_id playlist_name)
+
+    async createPlaylist(user,data){
+        try{
+            await plist.get(data.name);
+            // console.log("name exists");
+            //added functionality letting user know that the name already exists
+        }
+        catch{
+            await plist.put({_id:data.name,songs:[]});
+        }
     }
 
-    async readAllPlaylists(){
-    try{
-        const docs = await plist.allDocs();
-        return docs.rows.map(row => row.id);
+    async readAllPlaylists(user){
+        try{
+            const docs = await plist.allDocs();
+            return docs.rows.map(row => row.id);
+        }
+        catch(err){
+            console.log(err);
+        }
     }
-    catch(err){
-        console.log(err);
-    }
-    }
-    async readPlaylist(name){
-    try{
-        let data = await plist.get(name);
-        return data.songs;
-    }
-    catch(err){
-        console.log(err);
-    }
+    async readPlaylist(user,playlist_name){
+        try{
+            let data = await plist.get(name);
+            return data.songs;
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     //songID will be used in the API call and name,artist album etc will be available at the call
     //add songs to playlist
     async updatePlaylist(name,songID){
-    try{
-        const curData = await plist.get(name);
-        curData.songs.push(songID);
-        // console.log(curData.songs)
-        plist.put({_id:name,_rev:curData._rev,songs:curData.songs});
-    }
-    catch(err){
-        console.log(err);
-    }
+        try{
+            const curData = await plist.get(name);
+            curData.songs.push(songID);
+            // console.log(curData.songs)
+            plist.put({_id:name,_rev:curData._rev,songs:curData.songs});
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     //deletes a song from the playlist
     //(may have to change functionality to have index of song instead of ID)
-   async deleteSong(playlist,songID){
-    try{
-        const data = await plist.get(playlist);
-        let ind = data.songs.indexOf(songID);
-        data.songs.splice(ind,1);
-    }
-    catch(err){
-        console.log(err);
-    }
+   async deleteSong(user,playlist,songID){
+        try{
+            const data = await plist.get(playlist);
+            let ind = data.songs.indexOf(songID);
+            data.songs.splice(ind,1);
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
-    async deletePlaylist(playlist){
-    console.log(playlist);
-    try{
-        await plist.remove(playlist)
-    }
-    catch(err){
-        console.log(err)
-    }
+    async deletePlaylist(user,playlist){
+        console.log(playlist);
+        try{
+            await plist.remove(playlist)
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 }
 

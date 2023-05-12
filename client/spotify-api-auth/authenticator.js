@@ -20,8 +20,8 @@ const authUrl = `${AUTH_URL}?${authParams.toString()}`;
 
 // Listen for the "Authorize with Spotify" button click event
 document.querySelector('#authorize').addEventListener('click', async () => {
-  //window.location.href = authUrl;
-  await fetch('/login', {
-        method: 'GET',
-  })
+  window.location.href = authUrl;
+  // await fetch('/login', {
+  //       method: 'GET',
+  // })
 });

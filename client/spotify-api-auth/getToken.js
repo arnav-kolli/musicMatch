@@ -45,5 +45,4 @@ buttonElem.addEventListener('click', async () => {
     });
 })
 
-export {toEx}
 
