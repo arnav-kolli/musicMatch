@@ -4,7 +4,7 @@ const REDIRECT_URI = 'http://localhost:3001/client/home.html';
 const AUTH_URL = 'https://accounts.spotify.com/authorize';
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 
-const SCOPES = ['playlist-read-private', 'playlist-read-collaborative'];
+const SCOPES = ['playlist-read-private', 'playlist-read-collaborative', 'user-top-read'];
 
 const STATE = Math.random().toString(36).substring(2, 15);
 

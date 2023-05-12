@@ -22,7 +22,6 @@ export async function crudCreatePost(data) {
   }
   
   export async function crudUpdatePost(id, data) {
-    // TODO #5: Complete the updateCounter function
     try{
       const response = await fetch(`/update/${id}`, {
         method: 'PUT',
@@ -37,7 +36,6 @@ export async function crudCreatePost(data) {
   }
   
   export async function deleteCounter(id) {
-    // TODO #6: Complete the deleteCounter function
     try{
       const response = await fetch(`/delete`, {
         method: 'DELETE',
