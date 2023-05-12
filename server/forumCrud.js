@@ -1,7 +1,7 @@
 import express, { request, response } from 'express';
 import logger from 'morgan';
 import 'dotenv/config'
-import { database } from './database';
+import { database } from './database.js';
 
 const app = express();
 const port = 3001;
