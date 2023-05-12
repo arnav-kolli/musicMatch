@@ -7,13 +7,12 @@ const form = document.getElementById("form");
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   console.log("yoooooo")
-  const formData = new FormData(event.target);
   const postData = {
-    'artist_name': formData.get('artist-name'),
-    'event_date': formData.get('event-date'),
-    'event_name': formData.get('event-name'),
-    'description': formData.get('post-content'),
-    'date_posted': formData.get('date-posted')
+    'artist_name': document.getElementById('artist-name').value,
+    'event_date': document.getElementById('event-date').value,
+    'event_name': document.getElementById('event-name').value,
+    'description': document.getElementById('post-content').value,
+    'date_posted': document.getElementById('date-posted').value,
   };
   try {
     await crud.crudCreatePost(postData)
