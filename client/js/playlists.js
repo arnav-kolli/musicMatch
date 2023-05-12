@@ -44,15 +44,7 @@ async function populateSongs(name){
     })
 }
 
-var accessToken = "";
-function test(access){
-    accessToken = access
-    console.log(accessToken);
-}
 
-
-
-export {test};
 // newPlaylist("shut up my mom is calling");
 // crud.crudUpdatePlaylist({name:"shut up my mom is calling",song:"kyle"})
 // crud.crudDeletePlaylist({name:"shut up my mom is calling"});
