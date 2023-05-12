@@ -29,7 +29,6 @@ export async function createPost(data) {
   
 // Function to retrieve all forum posts
 export async function getAllPosts() {
-  console.log("entered forcrud")
   const queryText = 'SELECT * FROM forums'
   let data = (await pool.query(queryText))
   console.log("rows", data.rows)
@@ -39,7 +38,10 @@ export async function getAllPosts() {
   
 // Function to retrieve a specific forum post by ID
 export async function getPostById(id) {
-    return db.get(id);
+  const queryText = 'SELECT * FROM forums WHERE forum_id = $1'
+  let data = (await pool.query(queryText, [id]))
+  return data.rows;
+  //return db.get(id);
 }
   
 // Function to update an existing forum post
@@ -58,9 +60,6 @@ export async function deletePost(id) {
       });
 }
 
-//PlaylistCrud
-
-//data:{name}
 export async function createPlaylist(data){
   try{
       await plist.get(data.name);

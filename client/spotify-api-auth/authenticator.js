@@ -1,5 +1,5 @@
 const CLIENT_ID = '005d6e07f1404e53a388cdd5933ba469';
-const REDIRECT_URI = 'http://127.0.0.1:5501/client/Home.html';
+const REDIRECT_URI = 'http://localhost:3001/client/home.html';
 
 const AUTH_URL = 'https://accounts.spotify.com/authorize';
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
