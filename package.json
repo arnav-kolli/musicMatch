@@ -8,7 +8,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node client/js/forumCrud.js"
+    "start": "node ./server/forumCrud.js"
   },
   "author": "rahul",
   "license": "ISC",
