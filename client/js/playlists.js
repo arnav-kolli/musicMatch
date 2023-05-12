@@ -1,7 +1,5 @@
 import * as crud from "./playlistCRUD.js";
 
-
-
 const create = document.getElementById("createPlaylist");
 const playlistname = document.getElementById("playlistname");
 const playlist = document.getElementById("playlist")

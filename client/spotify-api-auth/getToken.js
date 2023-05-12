@@ -45,4 +45,4 @@ buttonElem.addEventListener('click', async () => {
     });
 })
 
-
+export {accessToken};
