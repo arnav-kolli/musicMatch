@@ -42,6 +42,8 @@ window.onload = function() {
     // window.accessToken = accessToken;
   };
 
+
+  //TEST CODE TO SEE IF THE ACCESS TOKEN CAN BE USED TO FETCH ENDPOINTS
 let buttonElem = document.getElementById('ex')
 buttonElem.addEventListener('click', async () => {
     // Use the access token in your API requests
