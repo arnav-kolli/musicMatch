@@ -24,30 +24,14 @@ window.onload = function() {
         accessToken = data.access_token
         console.log(accessToken);
         console.log('Access token:', data.access_token);        
-        // Save your access token in a secure way!
       });
     }
-    // console.log("here");
-    // console.log(accessToken);
-    
-    // // Use the access token in your API requests
-    // fetch('https://api.spotify.com/v1/me/top/tracks', {
-    //     method: 'GET',
-    //     headers: { 'Authorization' : 'Bearer ' + 'BQB1qwc4F0_b93wUk9Tc0Xzl9dFxFSpo1SPIICdvi3U-Zwrfc82qkIXZBgDhnK2rfsmr7rmuF1OYSevEhXtoabganP9PMe0SHhDUacpi875Jd1AtIjHvREHDG0Kz_WGR0RM1wrg0fIJqUc9i-jwcbmGUN9_0RHX0pQu_SHoEvJAfQwukzq_aawNx5DFULZQbHX7LV20MXdzGYNnVLiKxVAU'
-    //     }
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log(data); // Do something with the retrieved data
-    // });
-    // window.accessToken = accessToken;
   };
 
 
   //TEST CODE TO SEE IF THE ACCESS TOKEN CAN BE USED TO FETCH ENDPOINTS
 let buttonElem = document.getElementById('ex')
 buttonElem.addEventListener('click', async () => {
-    // Use the access token in your API requests
     console.log("in event listener");
     console.log(accessToken);
     await fetch('https://api.spotify.com/v1/me/top/tracks', {
@@ -57,7 +41,7 @@ buttonElem.addEventListener('click', async () => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data); // Do something with the retrieved data
+        console.log(data); 
     });
 })
 
