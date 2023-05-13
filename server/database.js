@@ -29,7 +29,6 @@ class Database{
     async getAllPosts() {
         const queryText = 'SELECT * FROM forums'
         let data = (await this.pool.query(queryText))
-        //db.allDocs({ include_docs: true }).then(response => response.rows.map(row => row.doc));
         return data.rows
     }
     
@@ -38,7 +37,6 @@ class Database{
         const queryText = 'SELECT * FROM forums WHERE forum_id = $1'
         let data = (await this.pool.query(queryText, [id]))
         return data.rows;
-        //return db.get(id);
     }
     
     // Function to update an existing forum post
