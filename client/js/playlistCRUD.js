@@ -16,7 +16,7 @@ export async function crudCreatePlaylist(data) {
     }
   }
   
-  export async function crudReadPlaylists() {
+  export async function crudReadPlaylists() { 
     try {
       const response = await fetch(`/readPlaylists`, {
         method: 'GET',
@@ -32,8 +32,8 @@ export async function crudCreatePlaylist(data) {
     try {
       const response = await fetch(`/readSongs?name=${data.name}`, {
         method: 'GET',
-        // body: JSON.stringify(data)
-
+        // body: JSON.stringify(data) 
+//fixes json body error
       });
       let ret = await response.json();
       return ret
