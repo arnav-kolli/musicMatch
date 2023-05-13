@@ -6,6 +6,7 @@ const form = document.getElementById("form");
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  console.log("yoooooo")
   const postData = {
     'artist_name': document.getElementById('artist-name').value,
     'event_date': document.getElementById('event-date').value,
