@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/client', express.static('client'));
 
-
+app.get('/', async (request, response) => {
+  response.redirect("http://localhost:3001/client/home.html")
+})
 app.post('/create', async (request, response) => {
   try {
     const options = request.body;
@@ -42,37 +44,6 @@ app.delete('/delete', async (request, response) => {
   const options = request.body
   database.deleteCounter(options.id)
 })
-
-app.get('/login', async (request, response) => {
-  try {
-    const CLIENT_ID = '005d6e07f1404e53a388cdd5933ba469';
-    const REDIRECT_URI = 'http://localhost:3001/callback';
-    const AUTH_URL = 'https://accounts.spotify.com/authorize';
-    const SCOPES = ['playlist-read-private', 'playlist-read-collaborative', 'user-top-read'];
-
-    const STATE = Math.random().toString(36).substring(2, 15);
-
-    const authParams = new URLSearchParams({
-      client_id: CLIENT_ID,
-      response_type: 'code',
-      redirect_uri: REDIRECT_URI,
-      scope: SCOPES.join(' '),
-      state: STATE
-    });
-
-    const authUrl = `${AUTH_URL}?${authParams.toString()}`;
-    response.redirect(authUrl)
-  } catch (error) {
-    console.error(error);
-    response.status(400).json({error: "Error in create."});
-  }
-})
-
-app.get('/callback', (response, request) => {
-  const { code } = req.query;
-  console.log(code);
-})
-
 
 app.post("/createPlaylist",async(request,response)=>{
   try{

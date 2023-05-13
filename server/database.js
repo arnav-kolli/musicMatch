@@ -8,7 +8,6 @@ const plist = new PouchDB('Playlist');
 
 class Database{ 
     constructor(){
-        console.log(process.env.DATABASE_URL)
         const connectionString = process.env.DATABASE_URL;
         const poolConfig = {
         connectionString: connectionString,
@@ -31,7 +30,6 @@ class Database{
     async getAllPosts() {
         const queryText = 'SELECT * FROM forums'
         let data = (await this.pool.query(queryText))
-        console.log("rows", data.rows)
         //db.allDocs({ include_docs: true }).then(response => response.rows.map(row => row.doc));
         return data.rows
     }
