@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <title>Create Post - Event Forum</title>
   <link rel="stylesheet" href="./createForum.css">
+  <style>
+    /* Add the styles for the button */
+    .back-button {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    .back-button:hover {
+      background-color: #555;
+    }
+  </style>
   <script type="module" src="js/createForumPost.js"></script>
 </head>
 <body>
@@ -11,7 +29,7 @@
   
   <form id="form">
     <label for="artist-name">Artist Name:</label>
-    <input type="text" id="artist-name" placeholder="Example: Drake"name="artist-name" required>
+    <input type="text" id="artist-name" placeholder="Example: Drake" name="artist-name" required>
     <br>
     
     <label for="event-date">Event Date:</label>
@@ -19,7 +37,7 @@
     <br>
     
     <label for="event-name">Event Name:</label>
-    <input type="text" id="event-name" placeholder="Example: Coachella"name="event-name" required>
+    <input type="text" id="event-name" placeholder="Example: Coachella" name="event-name" required>
     <br>
     
     <label for="post-content">Description:</label>
@@ -30,8 +48,17 @@
     <input type="date" id="date-posted" name="date-posted" required>
     <br>
 
+
+    <button class="back-button" onclick="goBack()">Go Back</button>
+
+    <script>
+      function goBack() {
+        window.location.href = "groups.html";
+      }
+    </script>
     <input type="submit" value="Create Post">
   </form>
   
+
 </body>
 </html>
