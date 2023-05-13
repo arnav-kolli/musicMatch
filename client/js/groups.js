@@ -29,7 +29,7 @@ async function main() {
         coolData[i]["artist_name"] +
         "</div>" +
         "<div>" +
-        coolData[i]["event_date"] +
+        "Event Date: " + coolData[i]["event_date"] +
         "</div>" +
         "<div>" +
         coolData[i]["event_name"] +
