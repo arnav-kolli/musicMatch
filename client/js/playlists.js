@@ -1,6 +1,6 @@
 import * as crud from "./playlistCRUD.js";
+import { getAccessToken } from "../spotify-api-auth/getToken.js";
 
-console.log(window.localStorage.getItem("accessToken"));
 
 const create = document.getElementById("createPlaylist");
 const playlistname = document.getElementById("playlistname");
@@ -45,6 +45,11 @@ async function populateSongs(name){
         playlist.appendChild(label);
     })
 }
+
+console.log(getAccessToken());
+
+
+
 
 
 // newPlaylist("shut up my mom is calling");

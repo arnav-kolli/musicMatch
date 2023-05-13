@@ -30,19 +30,17 @@ window.onload = function() {
 
 
   //TEST CODE TO SEE IF THE ACCESS TOKEN CAN BE USED TO FETCH ENDPOINTS
-let buttonElem = document.getElementById('ex')
-buttonElem.addEventListener('click', async () => {
-    console.log("in event listener");
-    console.log(accessToken);
-    await fetch('https://api.spotify.com/v1/me/top/tracks', {
-        method: 'GET',
-        headers: { 'Authorization' : 'Bearer ' + accessToken
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data); 
-    });
-})
-
-export {accessToken};
+// let buttonElem = document.getElementById('ex')
+// buttonElem.addEventListener('click', async () => {
+//     console.log("in event listener");
+//     console.log(accessToken);
+//     await fetch('https://api.spotify.com/v1/me/top/tracks', {
+//         method: 'GET',
+//         headers: { 'Authorization' : 'Bearer ' + accessToken
+//         }
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data); 
+//     });
+// })
