@@ -18,8 +18,9 @@ class Database{
     // Function to create a new forum post
     async createPost(data) {
         try {
+            console.log([data.artist_name, data.event_date, data.event_name, data.description, data.date_posted])
             const queryText = 'INSERT INTO forums(artist_name, event_date, event_name, description, date_posted) VALUES($1, $2, $3, $4, $5);';
-            await this.pool.query(queryText,[data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
+            await this.pool.query(queryText,[data.artist_name, data.event_date, data.event_name, data.description, data.date_posted])
         } catch (error) {
             console.error(error);
         }

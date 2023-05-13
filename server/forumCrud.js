@@ -16,6 +16,7 @@ app.get('/', async (request, response) => {
 app.post('/create', async (request, response) => {
   try {
     const options = request.body;
+    console.log(options)
     await database.createPost(options);
     response.status(200).json({message: "Post created successfully."});
   } catch (error) {
