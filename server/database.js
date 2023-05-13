@@ -102,8 +102,8 @@ class Database{
         //     console.log(err);
         // }
         try{
-            let query = "select song_id from playlist_name where user_id = $1 and playlist_name = $2;";
-            let data =await this.pool.query(query,[user,playlist_name]);
+            let query = "select song_id from playlists where user_id = $1 and playlist_name = $2 and song_id!=$3;";
+            let data =await this.pool.query(query,[user,playlist_name,"null"]);
             return data.rows;
         }
         catch(err){

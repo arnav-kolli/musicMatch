@@ -27,7 +27,7 @@ export async function crudCreatePlaylist(data) {
     }
   }
   
-  //data:{name}
+  //data:{user,playlist}
   export async function crudReadSongs(data) {
     try {
       const response = await fetch(`/readSongs?user=${data.user}&playlist=${data.playlist}`, {
