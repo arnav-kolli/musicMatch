@@ -7,13 +7,13 @@ import * as crud from "./crud.js";
 //[{},{},{},{},{}]
 
 let forums = document.getElementById("forums");
-await crud.crudCreatePost({
-  artistName: "Anvesh Sunkara",
-  eventDate: "2023-07-30",
-  eventName: "Coachella",
-  Description: "Anvesh is performing",
-  DatePosted: "2023-04-23",
-});
+// await crud.crudCreatePost({
+//   artistName: "Anvesh Sunkara",
+//   eventDate: "2023-07-30",
+//   eventName: "Coachella",
+//   Description: "Anvesh is performing",
+//   DatePosted: "2023-04-23",
+// });
 
 async function main() {
   let posts = await crud.crudReadAllPosts();

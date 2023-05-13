@@ -17,7 +17,6 @@ export async function crudCreatePost(data) {
   
   export async function crudReadAllPosts() {
     try {
-      console.log("in crud")
       const response = await fetch(`/readAll`, {
         method: 'GET',
       });
@@ -30,7 +29,7 @@ export async function crudCreatePost(data) {
   
   export async function crudUpdatePost(id, data) {
     try{
-      const response = await fetch(`/update/${id}`, {
+      await fetch(`/update/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {
