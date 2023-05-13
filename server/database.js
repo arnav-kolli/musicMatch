@@ -85,7 +85,7 @@ class Database{
         //     console.log(err);
         // }
         try{
-            let query = "Select playlist_name from playlists where user_id=$1";
+            let query = "Select distinct playlist_name from playlists where user_id=$1";
             let data = await this.pool.query(query,[user]);
             return data.rows;
         }

@@ -49,7 +49,7 @@ app.delete('/delete', async (request, response) => {
 app.post("/createPlaylist",async(request,response)=>{
   try{
     const options = request.body;
-    await database.createPlaylist(options);
+    await database.createPlaylist(options.user,options.playlist);
   }
   catch(err){
     console.log(err);
@@ -58,7 +58,8 @@ app.post("/createPlaylist",async(request,response)=>{
 
 app.get('/readPlaylists',async (request,response)=>{
   try {
-    let res = await database.readAllPlaylists();
+    const options = request.query
+    let res = await database.readAllPlaylists(options.user);
     response.status(200).json({message: "list returned successfully.", playlists: res});
   } catch (error) {
     console.error(error);
@@ -69,7 +70,7 @@ app.get('/readPlaylists',async (request,response)=>{
 app.get('/readSongs',async (request,response)=>{
   try{
     const options = request.query;
-    let res = await database.readPlaylist(options.name);
+    let res = await database.readPlaylist(options.user,options.playlist);
     response.json({name:options.name,songs:res});
   }
   catch(error){
@@ -80,7 +81,7 @@ app.get('/readSongs',async (request,response)=>{
 app.put('/addSong',async (request,response)=>{
   try{
     const options = request.query;
-    database.updatePlaylist(options.name,options.songID);
+    database.updatePlaylist(options.user,options.songID,options.playlist);
     // response.json("Successful addition")
   }
   catch(err){

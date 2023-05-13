@@ -1,6 +1,4 @@
-
-
-
+//data:{user:username,playlist:playlistname}
 export async function crudCreatePlaylist(data) {
     try{
     await fetch(`/createPlaylist`, {
@@ -16,10 +14,11 @@ export async function crudCreatePlaylist(data) {
     }
   }
   
-  export async function crudReadPlaylists() { 
+  //data:{user:username}
+  export async function crudReadPlaylists(data) {
     try {
-      const response = await fetch(`/readPlaylists`, {
-        method: 'GET',
+      const response = await fetch(`/readPlaylists?user=${data.user}`, {
+        method: 'GET'
       });
       let ret = await response.json();
       return ret
@@ -28,12 +27,13 @@ export async function crudCreatePlaylist(data) {
     }
   }
   
+  //data:{name}
   export async function crudReadSongs(data) {
     try {
-      const response = await fetch(`/readSongs?name=${data.name}`, {
+      const response = await fetch(`/readSongs?user=${data.user}&playlist=${data.playlist}`, {
         method: 'GET',
-        // body: JSON.stringify(data) 
-//fixes json body error
+        // body: JSON.stringify(data)
+
       });
       let ret = await response.json();
       return ret
@@ -43,10 +43,10 @@ export async function crudCreatePlaylist(data) {
   }
 
   //Adding songs to playlist
-  //data:{playlistname,songname}
+  //data:{user,song,playlist}
   export async function crudUpdatePlaylist(data) {
     try{
-      const response = await fetch(`/addSong?name=${data.name}&songID=${data.song}`, {
+      const response = await fetch(`/addSong?user=${data.user}&songID=${data.song}&playlist=${data.playlist}`, {
         method: 'PUT',
         body: JSON.stringify(data)
       });
