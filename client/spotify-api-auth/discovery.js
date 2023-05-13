@@ -1,8 +1,10 @@
+import * as playlistcrud from "../js/playlistCRUD.js"
 
 let topTracks = [];
 let songQueue = [];
 let currTrack = null;
-audio = new Audio();
+let user = "";
+let audio = new Audio();
 const likeButtonElem = document.getElementById('like-btn');
 const dislikeButtonElem = document.getElementById('dislike-btn')
 
@@ -21,6 +23,20 @@ async function fetchTopTracks(){
         console.error(error);
     }
 }
+
+//gets the user's id
+async function fetchUser(){
+    await fetch('https://api.spotify.com/v1/me', {
+                method: 'GET',
+                headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                user = data.id; 
+            });
+}
+
 
 //updates current song to random track from user's top 50 tracks
 function fetchRandomTrack(){
@@ -85,6 +101,7 @@ function updateSong(){
 function like() {
     if(currTrack){
         addRecs(currTrack.id);
+        playlistcrud.crudUpdatePlaylist({user,song:currTrack.id,playlist:"Discover"})
     }
     next();
 }
@@ -105,7 +122,8 @@ dislikeButtonElem.addEventListener('click', function() {
 });
 
 // fetch the user's top tracks when the page loads
-window.onload = function() {
+window.onload = async function() {
+    await fetchUser()
     fetchTopTracks().then(() => {
         next();
     });
