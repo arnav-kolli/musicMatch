@@ -8,7 +8,6 @@ const plist = new PouchDB('Playlist');
 
 class Database{ 
     constructor(){
-        console.log(process.env.DATABASE_URL)
         const connectionString = process.env.DATABASE_URL;
         const poolConfig = {
         connectionString: connectionString,
@@ -21,7 +20,7 @@ class Database{
         try {
             await db.post(data);
             const queryText = 'INSERT INTO forums(artist_name, event_date, event_name, description, date_posted) VALUES($1, $2, $3, $4, $5);';
-            await pool.query(queryText,[data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
+            await this.pool.query(queryText,[data.artistName, data.eventDate, data.eventName, data.Description, data.DatePosted])
         } catch (error) {
             console.error(error);
         }
@@ -30,8 +29,7 @@ class Database{
     // Function to retrieve all forum posts
     async getAllPosts() {
         const queryText = 'SELECT * FROM forums'
-        let data = (await pool.query(queryText))
-        console.log("rows", data.rows)
+        let data = (await this.pool.query(queryText))
         //db.allDocs({ include_docs: true }).then(response => response.rows.map(row => row.doc));
         return data.rows
     }
@@ -39,7 +37,7 @@ class Database{
     // Function to retrieve a specific forum post by ID
     async getPostById(id) {
         const queryText = 'SELECT * FROM forums WHERE forum_id = $1'
-        let data = (await pool.query(queryText, [id]))
+        let data = (await this.pool.query(queryText, [id]))
         return data.rows;
         //return db.get(id);
     }
