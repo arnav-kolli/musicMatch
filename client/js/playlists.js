@@ -71,7 +71,7 @@ async function populateSongs(playlist_name){
         <th></th>
         <th>Song</th>
         <th>Artist</th>
-        <th<Album</th>
+        <th>Album</th>
       </tr>
     </thead>
     <tbody>`
