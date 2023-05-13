@@ -48,6 +48,31 @@
         height: 200px;
         white-space: normal; 
       }
+
+      .forum {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .forum > div {
+        margin-bottom: 5px;
+      }
+
+      .forum > div:first-child {
+        font-weight: bold;
+      }
+
+      .forum > div:nth-child(2) {
+        font-style: italic;
+      }
+
+      .forum > div:last-child {
+        font-size: 0.8em;
+        color: #999;
+      }
+
     </style>
   </head>
   <body>
@@ -60,7 +85,7 @@
       </ul>
     </div>
     <div id="forums">
-        <div id="forum">
+        <div class="forum">
             <div>Artist Name</div>
             <div>Event Date</div>
             <div>Event Name</div>
