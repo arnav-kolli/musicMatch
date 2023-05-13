@@ -78,7 +78,7 @@ async function next(){
     }
 
     updateSong();
-    
+    console.log(currTrack);
     if(currTrack.preview_url){
         audio.pause();
         audio = new Audio(currTrack.preview_url);
@@ -119,6 +119,12 @@ likeButtonElem.addEventListener('click', function() {
 //event listener for dislike button
 dislikeButtonElem.addEventListener('click', function() {
     dislike();
+});
+
+//eventlistener for key like/dislike button
+document.addEventListener("keyup",(key)=>{
+    if (key.code === "ArrowLeft") dislike()
+    else if (key.code === "ArrowRight") like()
 });
 
 // fetch the user's top tracks when the page loads
