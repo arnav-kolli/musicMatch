@@ -14,6 +14,7 @@ form.addEventListener('submit', async (event) => {
     'description': document.getElementById('post-content').value,
     'date_posted': document.getElementById('date-posted').value,
   };
+  console.log(postData)
   try {
     await crud.crudCreatePost(postData)
     // Redirect to the post page
