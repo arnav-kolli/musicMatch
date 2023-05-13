@@ -8,10 +8,7 @@ export async function crudCreatePost(data) {
           'Content-Type': 'application/json'
         }
       });
-<<<<<<< HEAD
-=======
       console.log("create") //crud console.log tests
->>>>>>> c7779dd4b47b8321fc22449aad2f9b597635f113
     } catch (err){
       console.log(err)
     }
