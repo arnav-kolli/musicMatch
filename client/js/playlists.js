@@ -65,7 +65,7 @@ async function populateSongs(playlist_name){
     console.log(songs);
     playlist.innerHTML = ""
     let html = `
-    <h1> DISCOVER </h1>
+    <h1> Liked Songs </h1>
   <table class = playlist-table>
     <thead>
       <tr>
