@@ -28,6 +28,7 @@ window.onload = async function() {
       });
     } else {
       try{
+        let check;
         await fetch('https://api.spotify.com/v1/me', {
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
@@ -35,10 +36,11 @@ window.onload = async function() {
         })
         .then(response => response.json())
         .then(data => {
+          check = data.id
             console.log(data.id); 
         });
 
-        if(localStorage.getItem("accessToken")){
+        if(localStorage.getItem("accessToken") && check){
           document.getElementById("signin").hidden = true
           console.log("have token")
         }
