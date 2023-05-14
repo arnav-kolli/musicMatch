@@ -6,6 +6,7 @@ const playlist = document.getElementById("playlist")
 const accessToken = localStorage.getItem("accessToken");
 const exportAll = document.getElementById("exportAll");
 const exportTo = document.getElementById("exportTo");
+const deleteSelected = document.getElementById("deleteSelected"); 
 
 let user = "";
 let userPlaylists = [];
@@ -175,19 +176,37 @@ async function exportSelected(){
     toExport = toExport.map((i)=>"spotify:track:"+i)
     console.log(toExport)
     console.log(playlist_id)
-    await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
+    console.log(JSON.stringify({"uris":toExport}))
+    try{
+    let response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
             method: 'POST',
             headers: { 'Authorization' : 'Bearer ' + accessToken,
             "Content-type":"application/json"
             },
-            body: JSON.stringify({uris:toExport,position:0})
+            body: JSON.stringify({"uris":toExport})
         });
+        console.log(response)
+    }
+    catch(error){
+        console.log("Aaa");
+        console.log(error);
+    }
         // .then(response => response.json())
         // .then(data => {
         //     user = data.id; 
         // });
 }
 
+deleteSelected.addEventListener("click",async ()=>{
+    let checkboxSongs = document.querySelectorAll(".playlist-table input[type='checkbox']");
+    let toDelete = []
+    for(let i = 0; i<checkboxSongs.length;i++){
+        if(checkboxSongs[i].checked){
+            crud.crudDeleteSong({user,songID:checkboxSongs[i].value});
+        }
+    }
+    await populateSongs("Discover");
+});
 // newPlaylist("shut up my mom is calling");
 // // crud.crudUpdatePlaylist({name:"shut up my mom is calling",song:"kyle"})
 // // crud.crudDeletePlaylist({name:"shut up my mom is calling"});

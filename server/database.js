@@ -134,7 +134,7 @@ class Database{
 
     //deletes a song from the playlist
     //(may have to change functionality to have index of song instead of ID)
-   async deleteSong(user,playlist_name,songID){
+   async deleteSong(user,songID){
         // try{
         //     const data = await plist.get(playlist);
         //     let ind = data.songs.indexOf(songID);
@@ -144,8 +144,8 @@ class Database{
         //     console.log(err);
         // }
         try{
-            let query = "delete from playlists where song_id=$1 and user_id=$2 and playlist_id =$3;";
-            await this.pool.query(query,[songID,user,playlist_name]);
+            let query = "delete from playlists where song_id=$1 and user_id=$2 and playlist_name =$3;";
+            await this.pool.query(query,[songID,user,"Discover"]);
         }
         catch(err){
             console.log(err);

@@ -67,10 +67,12 @@ export async function crudCreatePlaylist(data) {
     }
   }
   
+
   //remove songs from playlist
+  //data:{user,songid}
   export async function crudDeleteSong(data) {
     try{
-      const response = await fetch(`/deleteSong`, {
+      const response = await fetch(`/deleteSong?name=${data.user}&songID=${data.songID}`, {
         method: 'PUT',
         body: JSON.stringify(data)
       });
