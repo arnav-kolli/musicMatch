@@ -4,9 +4,12 @@ const create = document.getElementById("createPlaylist");
 const playlistname = document.getElementById("playlistname");
 const playlist = document.getElementById("playlist")
 const accessToken = localStorage.getItem("accessToken");
+const exportAll = document.getElementById("exportAll");
+const exportTo = document.getElementById("exportTo");
 
 let user = "";
-
+let userPlaylists = [];
+let userPlaylistcnt = 0;
 await fetch('https://api.spotify.com/v1/me', {
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + accessToken
@@ -26,21 +29,36 @@ async function newPlaylist(name){
     await crud.crudCreatePlaylist({"user":user,playlist:name})
 }
 
-async function populatePlaylists(){
-    let playlists = document.getElementById("playlists");
-    let names = await crud.crudReadPlaylists({user});
-
-    names = names.playlists
-    playlists.innerHTML = "";
-    console.log("names",names)
-    names.forEach(name=>{
-        let button = document.createElement('button');
-        button.innerText = name.playlist_name;
-        button.addEventListener('click',()=>{
-            populateSongs(name.playlist_name);
+async function getPlaylists(){
+    await fetch('https://api.spotify.com/v1/me/playlists?limit=50', {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + accessToken
+            }
         })
-        playlists.appendChild(button);
-    })
+        .then(response => response.json())
+        .then(data => {
+            userPlaylists = data.items; 
+        });
+    
+    // let label = document.createElement("label");
+    // label.setAttribute("for","dropdown");
+    // label.textContent = "Export to:"
+
+    // let select = document.createElement("select");
+    // select.setAttribute("id","dropdown");
+    // for (let i =0; i<userPlaylists.length;i++){
+    //     let option = document.createElement("option");
+    //     option.setAttribute("value",userPlaylists[i].id)
+    //     option.text = userPlaylists[i].name;
+    //     select.appendChild(option);
+    // }
+
+    // let button = document.createElement("button");
+    // button.textContent = "go";
+
+    // exportTo.appendChild(label);
+    // exportTo.appendChild(select);
+    // exportTo.appendChild(button);
 }
 
 async function populateSongs(playlist_name){
@@ -73,6 +91,7 @@ async function populateSongs(playlist_name){
         <th>Song</th>
         <th>Artist</th>
         <th>Album</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>`
@@ -82,10 +101,11 @@ async function populateSongs(playlist_name){
         console.log("check",songData)
         html += `
         <tr>
-        <td><input type="checkbox" value="${song.song_id}" id="${song.song_id}"></td>
+        <td><img src="${songData.art.url}"/></td>
         <td>${songData.name}</td>
         <td>${songData.artist.toString()}</td>
         <td>${songData.album}</td>
+        <td><input type="checkbox" value="${song.song_id}" id="${song.song_id}"></td>
       </tr>
       `
     };
@@ -99,11 +119,13 @@ async function main(){
     if(playlists.length == 0){
         await crud.crudCreatePlaylist({user,playlist:"Discover"});
     }
-    await populateSongs("Discover")
+    await populateSongs("Discover");
+    await getPlaylists();
+    console.log(userPlaylists);
 }
 
 async function songidToSong(song_id){
-    let songDetails = {name:"",artist:"",album:""}
+    let songDetails = {name:"",artist:"",album:"",art:""}
     await fetch(`https://api.spotify.com/v1/tracks/${song_id}`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + accessToken
@@ -118,10 +140,16 @@ async function songidToSong(song_id){
         }
         songDetails.artist=artists
         songDetails.album =  data.album.name
+        songDetails.art = data.album.images[2]
+        console.log(songDetails.art.url)
     });
     // console.log(songDetails)
     return songDetails
 }
+
+// exportAll.addEventListener("click",()=>{
+
+// }
 // newPlaylist("shut up my mom is calling");
 // // crud.crudUpdatePlaylist({name:"shut up my mom is calling",song:"kyle"})
 // // crud.crudDeletePlaylist({name:"shut up my mom is calling"});
