@@ -1,7 +1,7 @@
 var accessToken = "";
-window.onload = function() {
+window.onload = async function() {
     const code = new URLSearchParams(window.location.search).get('code');
-    
+
     if (code) {
       fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
@@ -26,6 +26,27 @@ window.onload = function() {
         document.getElementById("signin").hidden = true
         window.localStorage.setItem("accessToken",accessToken)     
       });
+    } else {
+      try{
+        await fetch('https://api.spotify.com/v1/me', {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + localStorage.getItem("accessToken")
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.id); 
+        });
+
+        if(localStorage.getItem("accessToken")){
+          document.getElementById("signin").hidden = true
+          console.log("have token")
+        }
+      } catch {
+       document.getElementById("signin").hidden = false 
+       console.log("dont have")
+      }
+      
     }
   };
 
