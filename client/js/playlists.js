@@ -9,7 +9,7 @@ const exportTo = document.getElementById("exportTo");
 
 let user = "";
 let userPlaylists = [];
-let userPlaylistcnt = 0;
+
 await fetch('https://api.spotify.com/v1/me', {
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + accessToken
@@ -30,40 +30,47 @@ async function newPlaylist(name){
 }
 
 async function getPlaylists(){
-    await fetch('https://api.spotify.com/v1/me/playlists?limit=50', {
-            method: 'GET',
-            headers: { 'Authorization' : 'Bearer ' + accessToken
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            userPlaylists = data.items; 
-        });
-    
-    // let label = document.createElement("label");
-    // label.setAttribute("for","dropdown");
-    // label.textContent = "Export to:"
+    let offset = 0
+    let cnt = 0;
+    while(true){
+        await fetch(`https://api.spotify.com/v1/me/playlists?limit=50&offset=${offset}`, {
+                method: 'GET',
+                headers: { 'Authorization' : 'Bearer ' + accessToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                userPlaylists.push(...data.items.filter((item)=>item.owner.id==user)); 
+                cnt = data.items.length;
+            });
+        offset+=50
+        if(cnt<50){
+            break
+        }
+    }
+    let label = document.createElement("label");
+    label.setAttribute("for","dropdown");
+    label.textContent = "Export Selected to:"
 
-    // let select = document.createElement("select");
-    // select.setAttribute("id","dropdown");
-    // for (let i =0; i<userPlaylists.length;i++){
-    //     let option = document.createElement("option");
-    //     option.setAttribute("value",userPlaylists[i].id)
-    //     option.text = userPlaylists[i].name;
-    //     select.appendChild(option);
-    // }
+    let select = document.createElement("select");
+    select.setAttribute("id","dropdown");
+    for (let i =0; i<userPlaylists.length;i++){
+        let option = document.createElement("option");
+        option.setAttribute("value",userPlaylists[i].id)
+        option.text = userPlaylists[i].name;
+        select.appendChild(option);
+    }
 
-    // let button = document.createElement("button");
-    // button.textContent = "go";
+    let button = document.createElement("button");
+    button.textContent = "go";
 
-    // exportTo.appendChild(label);
-    // exportTo.appendChild(select);
-    // exportTo.appendChild(button);
+    exportTo.appendChild(label);
+    exportTo.appendChild(select);
+    exportTo.appendChild(button);
 }
 
 async function populateSongs(playlist_name){
     let res = await crud.crudReadSongs({user,playlist:playlist_name});
-    console.log(res)
     playlist.innerHTML = "";
     // let html = `<h1>${playlist_name}</h1>`;
     // res.songs.forEach(song=>{
