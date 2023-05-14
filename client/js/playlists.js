@@ -17,10 +17,10 @@ await fetch('https://api.spotify.com/v1/me', {
             user = data.id; 
         });
 
-create.addEventListener("click",()=>{
-    newPlaylist(playlistname)
-    playlistname.innerText = "";
-});
+// create.addEventListener("click",()=>{
+//     newPlaylist(playlistname)
+//     playlistname.innerText = "";
+// });
 
 async function newPlaylist(name){
     await crud.crudCreatePlaylist({"user":user,playlist:name})
@@ -65,7 +65,8 @@ async function populateSongs(playlist_name){
     console.log(songs);
     playlist.innerHTML = ""
     let html = `
-  <table>
+    <h1> DISCOVER </h1>
+  <table class = playlist-table>
     <thead>
       <tr>
         <th></th>
@@ -98,7 +99,7 @@ async function main(){
     if(playlists.length == 0){
         await crud.crudCreatePlaylist({user,playlist:"Discover"});
     }
-    await populatePlaylists()
+    await populateSongs("Discover")
 }
 
 async function songidToSong(song_id){
