@@ -91,4 +91,18 @@ document.getElementById("signin").addEventListener('click', async () => {
   window.location.href = authUrl;
 })
 
+document.getElementById("crew").addEventListener('click', () => {
+  window.location.href = "groups.html"
+})
+
+document.getElementById("discover").addEventListener('click', () => {
+  window.location.href = "discover.html"
+})
+
+document.getElementById("playlist").addEventListener('click', () => {
+  window.location.href = "playlists.html"
+})
+
+
+
 
