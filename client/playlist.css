@@ -1,5 +1,5 @@
 body{
-  background-color: #999;
+  background-color:whitesmoke;
 }
 
 .header {
@@ -51,8 +51,9 @@ body{
   }
   
   .playlist-table td, .playlist-table th {
+    background-color: white;
     padding: 10px; 
-    border: 1px solid rgb(139, 158, 227); 
+    border: 3px solid rgb(139, 158, 227); 
   }
   
   .playlist-table th {
