@@ -62,7 +62,9 @@ async function getPlaylists(){
     }
 
     let button = document.createElement("button");
+    button.setAttribute("id","exportSelected")
     button.textContent = "go";
+    button.addEventListener("click",exportSelected);
 
     exportTo.appendChild(label);
     exportTo.appendChild(select);
@@ -87,7 +89,7 @@ async function populateSongs(playlist_name){
 
     // })
     let songs = res.songs.map(song=>songidToSong(song.song_id))
-    console.log(songs);
+    // console.log(songs);
     playlist.innerHTML = ""
     let html = `
     <h1> Liked Songs </h1>
@@ -105,7 +107,7 @@ async function populateSongs(playlist_name){
     
     for(let song of res.songs){
         let songData = await songidToSong(song.song_id);
-        console.log("check",songData)
+        // console.log("check",songData)
         html += `
         <tr>
         <td><img src="${songData.art.url}"/></td>
@@ -128,7 +130,7 @@ async function main(){
     }
     await populateSongs("Discover");
     await getPlaylists();
-    console.log(userPlaylists);
+    // console.log(userPlaylists);
 }
 
 async function songidToSong(song_id){
@@ -148,7 +150,6 @@ async function songidToSong(song_id){
         songDetails.artist=artists
         songDetails.album =  data.album.name
         songDetails.art = data.album.images[2]
-        console.log(songDetails.art.url)
     });
     // console.log(songDetails)
     return songDetails
@@ -157,9 +158,39 @@ async function songidToSong(song_id){
 // exportAll.addEventListener("click",()=>{
 
 // }
+
+
+main()
+
+async function exportSelected(){
+    let checkboxSongs = document.querySelectorAll(".playlist-table input[type='checkbox']");
+    let toExport = []
+    for(let i = 0; i<checkboxSongs.length;i++){
+        if(checkboxSongs[i].checked){
+            toExport.push(checkboxSongs[i].value);
+        }
+    }
+    let playlist_id = document.getElementById("dropdown");
+    playlist_id = playlist_id.value
+    toExport = toExport.map((i)=>"spotify:track:"+i)
+    console.log(toExport)
+    console.log(playlist_id)
+    await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
+            method: 'POST',
+            headers: { 'Authorization' : 'Bearer ' + accessToken,
+            "Content-type":"application/json"
+            },
+            body: JSON.stringify({uris:toExport,position:0})
+        });
+        // .then(response => response.json())
+        // .then(data => {
+        //     user = data.id; 
+        // });
+}
+
 // newPlaylist("shut up my mom is calling");
 // // crud.crudUpdatePlaylist({name:"shut up my mom is calling",song:"kyle"})
 // // crud.crudDeletePlaylist({name:"shut up my mom is calling"});
 // populatePlaylists();
 // await crud.crudUpdatePlaylist({user,song:"0vjeOZ3Ft5jvAi9SBFJm1j",playlist:"Discover"})
-main()
+
