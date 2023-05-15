@@ -21,14 +21,13 @@ await fetch('https://api.spotify.com/v1/me', {
             user = data.id; 
         });
 
-// create.addEventListener("click",()=>{
-//     newPlaylist(playlistname)
-//     playlistname.innerText = "";
-// });
 
-async function newPlaylist(name){
-    await crud.crudCreatePlaylist({"user":user,playlist:name})
-}
+function selectAll(){
+        let checkboxSongs = document.querySelectorAll(".playlist-table input[type='checkbox']");
+        for(let i = 0; i<checkboxSongs.length;i++){
+            checkboxSongs[i].checked = !checkboxSongs[i].checked
+        }
+    }
 
 async function getPlaylists(){
     let offset = 0
@@ -101,8 +100,8 @@ async function populateSongs(playlist_name){
         <th>Song</th>
         <th>Artist</th>
         <th>Album</th>
-        <th></th>
-      </tr>
+        <th><button class="selectAll" id="selectAll"></button></th>
+      </t
     </thead>
     <tbody>`
     
@@ -121,6 +120,9 @@ async function populateSongs(playlist_name){
     };
     html += "</tbody></table>";
     playlist.innerHTML = html;
+
+    const selectAllbtn = document.getElementById("selectAll");
+    selectAllbtn.addEventListener("click",selectAll);
 }
 
 async function main(){
@@ -172,11 +174,9 @@ async function exportSelected(){
         }
     }
     let playlist_id = document.getElementById("dropdown");
+
     playlist_id = playlist_id.value
     toExport = toExport.map((i)=>"spotify:track:"+i)
-    console.log(toExport)
-    console.log(playlist_id)
-    console.log(JSON.stringify({"uris":toExport}))
     try{
     let response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
             method: 'POST',
@@ -185,16 +185,38 @@ async function exportSelected(){
             },
             body: JSON.stringify({"uris":toExport})
         });
-        console.log(response)
+        alert(`exported songs to playlist`)
     }
     catch(error){
-        console.log("Aaa");
         console.log(error);
     }
-        // .then(response => response.json())
-        // .then(data => {
-        //     user = data.id; 
-        // });
+}
+
+async function exportAllSongs(){
+    let checkboxSongs = document.querySelectorAll(".playlist-table input[type='checkbox']");
+    let toExport = []
+    for(let i = 0; i<checkboxSongs.length;i++){
+        if(checkboxSongs[i].checked){
+            toExport.push(checkboxSongs[i].value);
+        }
+    }
+    let playlist_id = document.getElementById("dropdown");
+
+    playlist_id = playlist_id.value
+    toExport = toExport.map((i)=>"spotify:track:"+i)
+    try{
+    let response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
+            method: 'POST',
+            headers: { 'Authorization' : 'Bearer ' + accessToken,
+            "Content-type":"application/json"
+            },
+            body: JSON.stringify({"uris":toExport})
+        });
+        alert(`exported songs to playlist`)
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 
 deleteSelected.addEventListener("click",async ()=>{
@@ -207,9 +229,5 @@ deleteSelected.addEventListener("click",async ()=>{
     }
     await populateSongs("Discover");
 });
-// newPlaylist("shut up my mom is calling");
-// // crud.crudUpdatePlaylist({name:"shut up my mom is calling",song:"kyle"})
-// // crud.crudDeletePlaylist({name:"shut up my mom is calling"});
-// populatePlaylists();
-// await crud.crudUpdatePlaylist({user,song:"0vjeOZ3Ft5jvAi9SBFJm1j",playlist:"Discover"})
+
 
