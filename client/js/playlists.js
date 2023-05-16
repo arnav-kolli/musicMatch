@@ -74,22 +74,6 @@ async function getPlaylists(){
 async function populateSongs(playlist_name){
     let res = await crud.crudReadSongs({user,playlist:playlist_name});
     playlist.innerHTML = "";
-    // let html = `<h1>${playlist_name}</h1>`;
-    // res.songs.forEach(song=>{
-    //     // let label = document.createElement("label");
-    //     // let checkbox = document.createElement("input");
-    //     // checkbox.type="checkbox";
-    //     // checkbox.value=song;
-    //     // checkbox.id = song;
-    //     // label.innerText = song;
-    //     // label.appendChild(checkbox);
-    //     // label.appendChild(document.createElement("br"));
-    //     // playlist.appendChild(label);
-
-
-    // })
-    let songs = res.songs.map(song=>songidToSong(song.song_id))
-    // console.log(songs);
     playlist.innerHTML = ""
     let html = `
     <h1> Liked Songs </h1>
@@ -107,7 +91,6 @@ async function populateSongs(playlist_name){
     
     for(let song of res.songs){
         let songData = await songidToSong(song.song_id);
-        // console.log("check",songData)
         html += `
         <tr>
         <td><img src="${songData.art.url}"/></td>
@@ -158,9 +141,6 @@ async function songidToSong(song_id){
     return songDetails
 }
 
-// exportAll.addEventListener("click",()=>{
-
-// }
 
 
 main()
@@ -192,42 +172,25 @@ async function exportSelected(){
     }
 }
 
-async function exportAllSongs(){
-    let checkboxSongs = document.querySelectorAll(".playlist-table input[type='checkbox']");
-    let toExport = []
-    for(let i = 0; i<checkboxSongs.length;i++){
-        if(checkboxSongs[i].checked){
-            toExport.push(checkboxSongs[i].value);
-        }
-    }
-    let playlist_id = document.getElementById("dropdown");
-
-    playlist_id = playlist_id.value
-    toExport = toExport.map((i)=>"spotify:track:"+i)
-    try{
-    let response = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
-            method: 'POST',
-            headers: { 'Authorization' : 'Bearer ' + accessToken,
-            "Content-type":"application/json"
-            },
-            body: JSON.stringify({"uris":toExport})
-        });
-        alert(`exported songs to playlist`)
-    }
-    catch(error){
-        console.log(error);
-    }
-}
-
 deleteSelected.addEventListener("click",async ()=>{
     let checkboxSongs = document.querySelectorAll(".playlist-table input[type='checkbox']");
     let toDelete = []
     for(let i = 0; i<checkboxSongs.length;i++){
         if(checkboxSongs[i].checked){
-            crud.crudDeleteSong({user,songID:checkboxSongs[i].value});
+            toDelete.push({user,songID:checkboxSongs[i].value})
         }
     }
-    await populateSongs("Discover");
+    console.log(toDelete)
+    try {
+        await crud.crudDeleteSong(toDelete);
+        console.log("beforre reload!!!!")
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    //await populateSongs("Discover");
+    //reload page
+    
 });
 
 

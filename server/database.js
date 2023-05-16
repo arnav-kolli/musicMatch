@@ -134,18 +134,22 @@ class Database{
 
     //deletes a song from the playlist
     //(may have to change functionality to have index of song instead of ID)
-   async deleteSong(user,songID){
-        // try{
-        //     const data = await plist.get(playlist);
-        //     let ind = data.songs.indexOf(songID);
-        //     data.songs.splice(ind,1);
-        // }
-        // catch(err){
-        //     console.log(err);
-        // }
+   async deleteSong(data){
         try{
-            let query = "delete from playlists where song_id=$1 and user_id=$2 and playlist_name =$3;";
-            await this.pool.query(query,[songID,user,"Discover"]);
+            // let songIDs = [songID1, songID2, songID3]; // Array of song IDs
+            console.log("data", data)
+            let songIDs = data.map(obj => obj.songID);
+            console.log("songIDs: ", songIDs)
+            let user = data[0].user;
+            console.log("user", user)
+            let query = `DELETE FROM playlists 
+                        WHERE song_id IN (${songIDs.map((_, index) => `$${index + 1}`).join(',')})
+                            AND user_id = $${songIDs.length + 1}
+                            AND playlist_name = $${songIDs.length + 2};`;
+
+            let values = [...songIDs, user, "Discover"];
+
+            await this.pool.query(query, values);
         }
         catch(err){
             console.log(err);

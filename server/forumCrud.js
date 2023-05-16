@@ -89,13 +89,16 @@ app.put('/addSong',async (request,response)=>{
   }
 })
 
-app.put('/deleteSong',async(request,response)=>{
+app.post('/deleteSong',async(request,response)=>{
   try{
-    const options = request.query;
-    database.deleteSong(options.name,options.songID);
+    const options = request.body;
+    console.log("forumCrud: ",options)
+    await database.deleteSong(options);
+    response.status(200).json({message: "Post created successfully."});
   }
   catch(err){
     console.log(err);
+    response.status(400).json({error: "Error in create."});
   }
 });
 

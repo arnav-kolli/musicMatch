@@ -71,14 +71,14 @@
     <label for="date-posted">Date Posted:</label>
     <input type="date" id="date-posted" name="date-posted" required>
     <br>
-
+    <div class="button-container">
+      <button class="back-button" onclick="goBack()">Go Back</button>
+      <input type="submit" class="create-post-button" value="Create Post">
+    </div>
 
 
   </form>
-  <div class="button-container">
-    <button class="back-button" onclick="goBack()">Go Back</button>
-    <input type="submit" class="create-post-button" value="Create Post">
-  </div>
+  
 
   <script>
     function goBack() {

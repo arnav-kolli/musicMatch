@@ -1,5 +1,4 @@
 export async function crudCreatePost(data) {
-    
     try{
       await fetch(`/create`, {
         method: 'POST',
