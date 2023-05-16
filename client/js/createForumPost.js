@@ -6,7 +6,6 @@ const form = document.getElementById("form");
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  console.log("yoooooo")
   const postData = {
     'artist_name': document.getElementById('artist-name').value,
     'event_date': document.getElementById('event-date').value,
@@ -14,7 +13,6 @@ form.addEventListener('submit', async (event) => {
     'description': document.getElementById('post-content').value,
     'date_posted': document.getElementById('date-posted').value,
   };
-  console.log(postData)
   try {
     await crud.crudCreatePost(postData)
     // Redirect to the post page
