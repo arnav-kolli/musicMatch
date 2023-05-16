@@ -69,6 +69,7 @@ async function getPlaylists(){
     exportTo.appendChild(label);
     exportTo.appendChild(select);
     exportTo.appendChild(button);
+    exportTo.className = "export-container";
 }
 
 async function populateSongs(playlist_name){

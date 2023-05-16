@@ -68,3 +68,36 @@ body{
   h1{
     text-align: center;
   }
+
+  .export-container {
+    background-color: rgb(139, 158, 227);
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .export-container select {
+    color: black;
+    margin-right: 10px;
+  }
+  
+  .export-container select option {
+    color: black;
+  }
+  
+  .export-container button {
+    padding: 5px 10px;
+    background-color: rgb(109, 124, 200);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; /* Add space to the right of the buttons */
+  }
+  
+  .export-container button:hover {
+    background-color: rgb(109, 128, 197);
+  }
+  
