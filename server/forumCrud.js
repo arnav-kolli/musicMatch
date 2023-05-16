@@ -78,14 +78,16 @@ app.get('/readSongs',async (request,response)=>{
   }
 })
 
-app.put('/addSong',async (request,response)=>{
+app.post('/addSong',async (request,response)=>{
   try{
-    const options = request.query;
-    database.updatePlaylist(options.user,options.songID,options.playlist);
+    const options = request.body;
+    await database.updatePlaylist(options.user,options.song,options.playlist);
+    response.status(200).json({message: "added song successfully."});
     // response.json("Successful addition")
   }
   catch(err){
     console.log(err);
+    response.status(400).json({error: "Error in songAdd"});
   }
 })
 

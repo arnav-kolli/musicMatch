@@ -11,13 +11,15 @@ const dislikeButtonElem = document.getElementById('dislike-btn')
 //fetches user's top tracks using spotify endpoint
 async function fetchTopTracks(){
     try{
+        console.log("top tracks")
         let response = 
             await fetch('https://api.spotify.com/v1/me/top/tracks?limit=50', {
                 method: 'GET',
                 headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('accessToken') }
             });
         let jsonStr = await response.json();
-        topTracks = jsonStr.items;
+        console.log("json", jsonStr.items)
+        topTracks.push(...jsonStr.items);
     }
     catch(error){
         console.error(error);
@@ -35,6 +37,7 @@ async function fetchUser(){
             .then(data => {
                 user = data.id; 
             });
+    console.log("fetched")
 }
 
 
@@ -53,11 +56,13 @@ async function addRecs(trackID){
           headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('accessToken') }
         });
         const data = await response.json();
+        console.log("in add recs")
         if(data.tracks && data.tracks.length > 0){
             songQueue.push(...data.tracks);
             console.log(songQueue);
         }
         else{
+            console.log("else statement recursive call")
             fetchRandomTrack();
             addRecs(currTrack.id);
         }
@@ -98,17 +103,20 @@ function updateSong(){
 }
 
 //function to add recs and shift songs when like button is hit
-function like() {
-    if(currTrack){
-        addRecs(currTrack.id);
-        playlistcrud.crudUpdatePlaylist({user,song:currTrack.id,playlist:"Discover"})
+async function like() {
+    let current = currTrack;
+    next();
+    
+    if(current){
+        try{
+            await addRecs(current.id);
+            await playlistcrud.crudUpdatePlaylist({user,song:current.id,playlist:"Discover"})
+        }
+        catch(err){
+            console.log(err)
+        }
     }
-    next();
-}
-
-//function to shift song and do nothing else when song is disliked
-function dislike(){
-    next();
+    console.log("thats crazy")
 }
 
 //event listener for like button
@@ -118,19 +126,21 @@ likeButtonElem.addEventListener('click', function() {
 
 //event listener for dislike button
 dislikeButtonElem.addEventListener('click', function() {
-    dislike();
+    next()
 });
 
 //eventlistener for key like/dislike button
 document.addEventListener("keyup",(key)=>{
-    if (key.code === "ArrowLeft") dislike()
+    if (key.code === "ArrowLeft") next()
     else if (key.code === "ArrowRight") like()
 });
 
 // fetch the user's top tracks when the page loads
 window.onload = async function() {
     await fetchUser()
-    fetchTopTracks().then(() => {
-        next();
-    });
+    // fetchTopTracks().then(() => {
+    //     next();
+    // });
+    await fetchTopTracks()
+    next()
 };

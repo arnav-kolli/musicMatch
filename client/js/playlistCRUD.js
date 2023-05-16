@@ -8,6 +8,7 @@ export async function crudCreatePlaylist(data) {
         'Content-Type': 'application/json'
       }
     });
+    console.log("playlist: ", data)
     }
     catch(err){
         console.log(err);
@@ -46,27 +47,20 @@ export async function crudCreatePlaylist(data) {
   //data:{user,song,playlist}
   export async function crudUpdatePlaylist(data) {
     try{
-      await fetch(`/addSong?user=${data.user}&songID=${data.song}&playlist=${data.playlist}`, {
-        method: 'PUT',
+      // ?user=${data.user}&songID=${data.song}&playlist=${data.playlist}`
+      console.log("updating", data)
+      await fetch(`/addSong`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data)
       });
+      console.log("playlist1: ",data)
     } catch (err) {
       console.log(err);
     }
   }
-
-  //Delete Playlist
-  export async function crudDeletePlaylist(data) {
-    try{
-      const response = await fetch(`/deletePlaylist?name=${data.name}`, {
-        method: 'DELETE',
-        body: JSON.stringify(data)
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  
 
   //remove songs from playlist
   //data:{user,songid}
