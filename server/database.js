@@ -4,7 +4,7 @@ import 'dotenv/config'
 
 const { Pool } = pg
 const db = new PouchDB('forum');
-const plist = new PouchDB('Playlist');
+
 
 class Database{ 
     constructor(){
@@ -157,13 +157,6 @@ class Database{
     }
 
     async deletePlaylist(user,playlist_name){
-        // console.log(playlist);
-        // try{
-        //     await plist.remove(playlist)
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
         try{
             let query = "delete from playlists where user_id=$1 and playlist_id=$2";
             await this.pool.query(query,[user,playlist_name]);
