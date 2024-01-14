@@ -1,20 +1,4 @@
-# Team 16 Project
-
-You are to start your team project here. Read the documentation for
-[Pr2: Creative Idea](https://umass-cs-326.github.io/docs/project/Idea/) and replace this paragraph with your team's
-creative web application idea!
-
-Also, replace NUM above with your team's number.
-
-Application name: MusicMatch
-
-Team Overview (name and github username):  
-Aayush Patel: aaypatel  
-Arnav Kolli: arnav-kolli  
-Rahul Vedula: rvedula02  
-Anvesh Sunkara: Anvesh8712
-
-Innovative Idea:
+Idea:
 Our idea is similar to existing dating apps. Current dating apps suggest users to each other based on a variety of features depending on the app. Tinder is mostly physical attributes while Bumble or Hinge use prompts that users can fill out. In our case we intend to design an app that one can use to discover both people AND music. 
 We intend to analyze user's music preferences so we can match users with similar music tastes while also having a discover music functionality where we suggest new music that can be added to a playlist. We're sure that the idea and concept itself is not new, however, we have not encountered an app that uses music as the base for matches. This makes the concept slightly unique in that it is a dating AND music app (sorta!).
 
@@ -27,7 +11,6 @@ Excluding user data, our application will probably deal with the following data 
 5. Playlists: Arrays --> Create "playlists" (arrays) of songs that a user likes from suggested music
 6. Artist info: Dictionaries --> We intend to have artist details, so it allows people to discover more music  
 
-At this point, this is what we can think of. However, we are sure that as we start work on this idea there will be more data concepts that arise. 
 
 Functionality:
 As was mentioned in the data above, we intend to have a fully functioning web app that has different types of functionalities.
